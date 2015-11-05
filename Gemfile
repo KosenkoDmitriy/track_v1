@@ -9,7 +9,8 @@ gem 'jquery-rails'
 gem 'jquery-cookie-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-gem 'pg'
+# gem 'pg'
+gem 'sqlite3'
 gem 'haml-rails', '~> 0.5.3'
 gem 'delayed_job_active_record'
 gem 'newrelic_rpm'
@@ -17,6 +18,10 @@ gem 'polyglot'
 gem 'bourbon'
 gem 'neat'
 gem 'slim'
+
+# Could not find a JavaScript runtime. See https://github.com/sstephenson/execjs for a list of available runtimes. (ExecJS::RuntimeUnavailable)
+gem 'therubyracer'
+gem 'execjs'
 
 #SPREE
 gem 'spree', github: 'spree/spree', branch: '2-2-stable'
@@ -28,7 +33,8 @@ gem 'spree_advanced_reporting', :git => 'https://github.com/mobispoke/spree_adva
 gem 'alchemy_cms', github: 'magiclabs/alchemy_cms', branch: '3.0-stable'
 
 #SPREE EXTENSIONS
-gem 'spree_variant_options_select', github: 'Wondersauce/spree_variant_options_select'
+# TODO: commented because the error occured: "Could not find spree_variant_options_select-2.1.3 in any of the sources"
+# gem 'spree_variant_options_select', :git => 'https://github.com/Wondersauce/spree_variant_options_select.git'
 gem 'spree_asset_variant_options', :git => 'https://github.com/Wondersauce/spree_asset_variant_options.git'
 gem 'spree_minicart', :git => 'https://github.com/Wondersauce/spree_minicart.git', :branch => 'master'
 gem 'spree_affiliate', :git => 'https://github.com/spree/spree_affiliate.git', :branch => '2-2-stable'
@@ -75,9 +81,9 @@ end
 
 group :development, :test do
   gem 'dotenv-rails', '< 2.0'
-  gem 'byebug'
+  gem 'byebug' # comment when ruby <= 1.9.3-p551
   gem 'awesome_print'
-  gem 'pry-byebug'
+  gem 'pry-byebug' # comment when ruby <= 1.9.3-p551
   gem 'rspec-rails', '~> 3.2'
   gem 'factory_girl_rails'
 end

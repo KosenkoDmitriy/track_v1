@@ -26,8 +26,8 @@ Spree.config do |config|
     config.shipstation_weight_units = "Ounces"
     config.shipstation_number = :shipment
   elsif Rails.env.staging? || Rails.env.development?
-    config.shipstation_username = ""
-    config.shipstation_password = ""
+    config.shipstation_username = "mobispoke"
+    config.shipstation_password = "mobispoke123"
     config.shipstation_weight_units = "Ounces"
     config.shipstation_number = :shipment
   end
