@@ -10,14 +10,18 @@ test:
   timeout: 5000
 
 development:
-  adapter: postgresql
-  database: tracksmith_development
-  encoding: unicode
-  host: localhost
-  port: <%= ENV['BOXEN_POSTGRESQL_PORT'] || 5432 %>
-  encoding: unicode
+  adapter: sqlite3
   pool: 5
   timeout: 5000
+  database: db/development.sqlite3
+  #adapter: postgresql
+  #database: tracksmith_development
+  #encoding: unicode
+  #host: localhost
+  #port: <%= ENV['BOXEN_POSTGRESQL_PORT'] || 5432 %>
+  #encoding: unicode
+  #pool: 5
+  #timeout: 5000
 
 integration:
   adapter: postgresql
