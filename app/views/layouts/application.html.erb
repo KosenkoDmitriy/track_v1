@@ -9,17 +9,17 @@
   <%= csrf_meta_tags %>
 
   <!-- OPEN GRAPH  -->
-  <meta property="og:title" content="<%= !@page.title.empty? ? @page.title : 'Running Deserves Better' %>"/>
+  <meta property="og:title" content="<%= !@page.try(:title).try(:empty?) ? @page.try(:title) : 'Running Deserves Better' %>"/>
   <meta property="og:site_name" content="Tracksmith"/>
-  <meta property="og:description" content="<%= !@page.meta_description.empty? ? @page.meta_description : !@page.title.empty? ? @page.title : 'Running Deserves Better' %>"/>
+  <meta property="og:description" content="<%= !@page.try(:meta_description).try(:empty?) ? @page.try(:meta_description) : !@page.try(:title).try(:empty?) ? @page.try(:title) : 'Running Deserves Better' %>"/>
   <meta property="og:url" content="<%= request.original_url %>"/>
 
   <!-- TWITTER -->
   <meta property="twitter:card" content="gallery"/>
   <meta property="twitter:site" content="@tracksmith"/>
   <meta property="twitter:creator" content="@tracksmith"/>
-  <meta property="twitter:title" content="<%= !@page.meta_description.empty? ? @page.meta_description : !@page.title.empty? ? @page.title : 'Running Deserves Better' %>"/>
-  <meta property="twitter:description" content="<%= !@page.meta_description.empty? ? @page.meta_description : !@page.title.empty? ? @page.title : 'Running Deserves Better' %>"/>
+  <meta property="twitter:title" content="<%= !@page.try(:meta_description).try(:empty?) ? @page.try(:meta_description) : !@page.try(:title).try(:empty?) ? @page.try(:title) : 'Running Deserves Better' %>"/>
+  <meta property="twitter:description" content="<%= !@page.try(:meta_description).try(:empty?) ? @page.try(:meta_description) : !@page.try(:title).try(:empty?) ? @page.try(:title) : 'Running Deserves Better' %>"/>
   <meta property="twitter:url" content="<%= request.original_url %>"/>
 
   <%= stylesheet_link_tag 'application' %>
@@ -32,7 +32,7 @@
 
   <!-- IMAGES FOR OPEN GRAPH AND TWITTER  -->
   <% image_count = 0; %>
-  <% @page.elements.each do |el| %>
+  <% @page.try(:elements).try(:each) do |el| %>
       <% if el.name == 'background_image_module'; %>
           <% el.essences.each do |essence| %>
               <% if essence.try(:picture_url) %>
@@ -62,7 +62,7 @@
 
 <%= render :partial => 'alchemy/shared/header' %>
 
-<%= content_tag :body, data: {page_layout: @page.page_layout, page_elements: unique_page_elements}, class: "#{@body_class}" do -%>
+<%= content_tag :body, data: {page_layout: @page.try(:page_layout), page_elements: unique_page_elements}, class: "#{@body_class}" do -%>
     <%= google_tag_manager %>
 
     <div id="fb-root"></div>

@@ -400,6 +400,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    libv8 (3.16.14.13)
     magiclabs-userstamp (2.1.0)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
@@ -492,6 +493,7 @@ GEM
       polyamorous (~> 0.6.0)
     rdoc (4.1.1)
       json (~> 1.4)
+    ref (2.0.0)
     rspec-core (3.2.3)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.1)
@@ -559,6 +561,9 @@ GEM
       compass (>= 0.12.2)
       sass (>= 3.2.0)
     temple (0.7.5)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
@@ -610,6 +615,7 @@ DEPENDENCIES
   delayed_job_active_record
   dotenv-rails (< 2.0)
   dragonfly-s3_data_store
+  execjs
   factory_girl_rails
   ffaker
   gibbon
@@ -647,6 +653,7 @@ DEPENDENCIES
   spree_store_credits!
   sqlite3
   susy
+  therubyracer
   turbolinks
   uglifier (>= 1.3.0)
 

@@ -30,17 +30,12 @@ Track::Application.routes.draw do
 
   mount Alchemy::Engine => '/', :as => 'alchemy'
 
-  Alchemy::Engine.routes.draw do
-  end
-
-
-
-    Spree::Core::Engine.draw_routes
+  Spree::Core::Engine.draw_routes
 
 
 
 
-          # The priority is based upon order of creation: first created -> highest priority.
+  # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
