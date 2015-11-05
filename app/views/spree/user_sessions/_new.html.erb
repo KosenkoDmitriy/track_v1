@@ -1,0 +1,14 @@
+<% if flash[:error] %>
+  <div class="flash errors"><%= flash[:error] %></div>
+<% end %>
+
+<% @body_id = 'login' %>
+<div id="existing-customer">
+  <h6><%= Spree.t(:login_as_existing) %></h6>
+  <div data-hook="login">
+    <%= render :partial => 'spree/shared/login' %>
+    <%= Spree.t(:or) %>
+    <%= link_to Spree.t(:forgot_password), spree.recover_password_path %>
+  </div>
+</div>
+<div data-hook="login_extras"></div>

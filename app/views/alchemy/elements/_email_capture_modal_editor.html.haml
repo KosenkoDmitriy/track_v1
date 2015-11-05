@@ -1,0 +1,9 @@
+= element_editor_for(element) do |el|
+  = el.edit :style, :select_values => ['basic', 'holiday2014', 'spring2015']
+  = el.edit :background_color, :select_values => ['purple', 'white', 'navy', 'crimson', 'forest', 'olive', 'red']
+  = el.edit :headline
+  = el.edit :text
+  %div.hint{:style=>"position: relative; top: -5px; color: green; margin-bottom: 10px;"}
+    &#8593; Google Analytics Unique Identifier
+  = el.edit :google_analytics_event_label
+  = el.edit :mailchimp_list_id

@@ -1,0 +1,8 @@
+<%= element_editor_for(element) do |el| -%>
+  <%= el.edit :event_name %>
+  <%= el.edit :event_image %>
+  <%= el.edit :event_text %>
+  <%= el.edit :event_where %>
+  <%= el.edit :event_when %>
+  <%= el.edit :event_align, :select_values => ['image-right', 'image-left'] %>
+<%- end -%>

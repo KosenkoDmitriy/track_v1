@@ -1,0 +1,171 @@
+*, *:before, *:after {-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+
+html,
+body{
+  height: 100%;
+}
+
+img {display: block; max-width: 100%;}
+ul {list-style: none;}
+
+.hidden {display: none !important;}
+.mobile-only {display: none;
+  @include respond-to(mobile) {display: block;}
+}
+
+.clearfix:before, .clearfix:after {content: ""; display: table;}
+.clearfix:after {clear: both;}
+.float-left {float: left;}
+.float-right {float: right;}
+
+.golden_61 {width: 61.8%;}
+.golden_38 {width: 38.2%;}
+
+.arrow {height:0; width: 0; border-top: 15px solid transparent; border-bottom: 15px solid transparent; position: absolute; top: 50%; margin-top: -15px;}
+.arrow-left {@extend .arrow; border-left: 15px solid $offwhite; left: 0;}
+.arrow-right {@extend .arrow; border-right: 15px solid $offwhite; right: 0;}
+
+body {background-color: $offwhite; color: #888; font-size:100%; @include ProximaReg; margin: 0 auto; -webkit-font-smoothing: antialiased;
+  &.spree-page {min-width: 0;}
+  @include respond-to(mobile) {min-width: 0; width: 100%; overflow-x: hidden;}
+}
+
+.page-content {
+  position: relative;
+  .isHeaderFixed &{
+    top: 70px;
+  }
+  @include respond-to(mobile) { top:90px; }
+}
+
+.navigation {text-align: center; border-bottom: 2px solid $lightpurple; width: 50%; margin: 80px auto 40px;
+  li {display: inline-block; padding: 10px; }
+}
+
+// email / referral form
+
+.email-form {max-width: 430px; width: 100%; margin: 0 auto; overflow: hidden; padding-top: 40px;
+  @include respond-to(mobile) {width: 100%; }
+
+  input{background-color: transparent; float: left; @include placeholder {color: $gold; };
+    @include respond-to(mobile) {float: none; text-align: center;}
+  }
+  input.email-input {width: 60%; margin: 0 15px 0 0; border: none; border-bottom: 1px solid $gold; padding: 8px 10px 0 0; font-size: emCal(30px); @include AGConLight(); color: $gold;
+    @include respond-to(mobile) {width: 80%; margin: 0 auto 25px; border: none; background-color: rgba(0, 0, 0, 0.1); padding: 15px;}
+  }
+  input[type="submit"] {
+    width: 30%;
+    float: right;
+    padding-left: 0;
+    padding-right: 0;
+
+    @include respond-to(mobile) {
+      width: 50%; float: none;
+    }
+  }
+
+  &#referral_form {
+    padding-top: 20px;
+
+    input {
+      float: none;
+    }
+
+    label.error {
+      margin: 0 auto;
+      width: 300px;
+      line-height: 1.5em;
+      text-transform: none;
+      background: none;
+      color: $red;
+    }
+
+    input[type=email] {
+      background-color: transparent;
+      font-size: 1.875em;
+      height: inherit;
+      margin-bottom: inherit;
+      padding: inherit;
+
+      &.error {
+        border: none;
+        border-bottom: 1px solid $red;
+      }
+    }
+
+    input[type="submit"] {
+      margin-top: 45px;
+
+      @include respond-to(mobile) {margin-top: 20px;}
+    }
+
+    input.email-input {
+      margin: 0 auto;
+      padding-top: 25px;
+
+      @include respond-to(mobile) {width: 80%; margin: 0 auto 25px; border: none; background-color: rgba(0, 0, 0, 0.1); padding: 15px;}
+    }
+
+    p {
+      margin: 40px 0 0
+    }
+  }
+}
+
+#response, .email-response {margin: 40px 0;}
+
+// referral form and confirmation
+.referral-page {
+  #referral_steps {
+    &.is-processing,
+    &.is-submitted {
+      #referral_step_01 {
+        display: none;
+      }
+
+      #referral_step_02 {
+        display: block;
+      }
+    }
+
+    &.is-submitted {
+      #referral_step_02 {
+        .processing {
+          opacity: 0;
+        }
+
+        .success {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  #referral_step_02 {
+    display: none;
+    padding: 100px 0 60px;
+    position: relative;
+
+    a.btn {
+      display: inline-block;
+    }
+
+    .processing,
+    .success {
+      @include transition(all .3s ease);
+    }
+
+    .processing {
+      @include transform(translateY(-50%));
+      opacity: 1;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 50%;
+    }
+
+    .success {
+      opacity: 0;
+    }
+  }
+}

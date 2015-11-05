@@ -1,0 +1,43 @@
+<%= element_view_for(element) do |el| -%>
+  
+  <% image = el.essence(:background_image) %>
+  <% mobile = el.essence(:mobile_image) %>
+  <% stamp = el.ingredient(:stamp_image)%>
+  <% height = el.ingredient(:module_height)%>
+  <% pageLink = el.ingredient(:page_link)%>
+  <% title = el.ingredient(:image_title) %>
+
+  <% if @page.page_layout == 'index' && pageLink  %>
+    <a href="<%= pageLink %>">
+  <%end%>
+
+  <%if el.ingredient(:overlay?)%>
+    <div class="overlay"></div>
+  <% end %>
+
+     <div title="<%= title %>" class="bg-image" style="background: url(<%= image_for_platform(el).picture_url %>) no-repeat center center; background-size: cover; <%if !height.blank? %>height: <%=height%>px <%end%>">
+
+    <div class="module-content <%= el.render :text_alignment %> ` el.render :text_color %>">
+      <div class="superheader"><%= el.render :superheader %></div>
+      <div class="module-headline"><%= el.render :headline %></div>
+      <div class="module-text ">
+        <%= el.render :text %>
+      </div>
+      <div class="bullet-list">
+       <%- element.contents.where(name: ['bullet']).each do |content| -%>
+        <% text = content.essence.stripped_body%>
+        <div class="bullet"> <%=text%> </div>
+      <%- end -%>
+     </div>
+     <% if stamp %>
+      <div class="stamp-image">
+        <%= image_tag URI.escape(show_alchemy_picture_path(stamp,  :format => (stamp.try(:suffix).to_s == 'png' ? 'png' : 'jpg'))).gsub('+', '%2B') %>
+      </div>
+     <% end %>
+    </div>
+  </div>
+    <% if @page.page_layout == 'index' %>
+  </a>
+  <%end%>
+
+<%- end -%>

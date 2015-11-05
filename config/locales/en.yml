@@ -1,0 +1,63 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  spree:
+    my_account: Account
+    cart: Cart
+    login_as_existing: Login
+    new_customer: New Account
+    instructions_to_reset_password: "Enter your email below, and we’ll send you a reset link."
+    registration: "Sign In"
+    order_state:
+      address: address
+      awaiting_return: awaiting return
+      canceled: canceled
+      cart: cart
+      considered_risky: considered risky
+      complete: complete
+      confirm: confirmation
+      delivery: shipping
+      payment: payment
+      resumed: resumed
+      returned: returned
+
+  referral_mailer:
+    new:
+      subject: "Your friend wants you to meet Tracksmith"
+      flash: "Rerrals on their way. Friend's happiness increasing wildly"
+    subscribe:
+      flash: "Thank you, we will be in touch soon."
+    rewards:
+      subject: "Thanks For Inviting Your Friends"
+
+  user_mailer:
+    welcome:
+      subject: "Welcome to Tracksmith!"
+    order_confirmed:
+      subject: "Your order has been confirmed!"
+    order_shipped:
+      subject: "Your order has shipped!"
+    store_credits: Store Credit
+
+  flash_notice:
+    sign_in_content: "To access meter, login or create an account"

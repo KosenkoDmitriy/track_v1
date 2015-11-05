@@ -1,0 +1,98 @@
+
+.footer {text-align: center;}
+.social { margin-bottom: emCal(50px);
+  h4 {font-size: emCal(11px); margin-bottom: 20px;
+    @include respond-to(mobile) {color: $silver;} }
+  .social-row {width: 100%; margin: 0 auto;}
+  .share-icon {display: inline-block; margin-right: 20px; background: image-url("social/social-sprite.png") no-repeat center center; width: 45px; height:45px;
+    @include highdpi(2) {background: image-url('social/social-sprite_x2.png') 0 center no-repeat; background-size: 180px 90px;
+    @include respond-to(mobile) {margin-right: 12px;}
+    }
+    &:last-child { margin-right: 0;}
+  } 
+  .footer-twitter {background-position: 0 0;
+    &:hover { background-position: 0 -45px;} 
+  }
+  .footer-fb {background-position: -45px 0;
+    &:hover {background-position: -45px -45px;} 
+  }
+  .footer-instagram {background-position: -90px 0;
+      &:hover {background-position: -90px -45px;} 
+    }
+  .footer-tumblr {background-position: -135px 0;
+    &:hover {background-position: -135px -45px;}
+   }
+ }
+
+
+.top-bar {width: 100%; border-top: 1px solid #222;
+  @include respond-to(mobile) {display: none;}
+  &.purple {background-color: $lightpurple;}
+  &.white {background-color: #fff; }
+  &.navy {background-color: $navy;}
+  &.red {background-color: #3e0606;}
+  &.gold {background-color: $gold;}
+}
+.back-to-top {display: block; width: 120px; margin: 0 auto; padding: 30px 0;
+    .top-arrow-img {width: 45px; margin: 0 auto; padding-bottom: 15px; } }
+.footer-bg {min-height: 700px; padding-top: 280px;
+@include respond-to(mobile) {padding: 0 !important;} }
+
+
+.footer-email { margin-bottom: emCal(150px);
+  @include respond-to(mobile) {margin-bottom: emCal(35px); padding: 0 20px;}
+    p {@include Garamond; font-size: emCal(18px); margin-bottom: 0;
+      @include respond-to(mobile) {display: none;}}
+  .email-form {margin-bottom: 30px;
+    @include respond-to(mobile) {margin-bottom: 60px;}
+  }
+}
+
+
+.footer-btn input {
+  @include respond-to(mobile) {float: none;}
+}
+
+.footer-pages {display: table; position: static;width: 80%; margin: 0 auto 55px;
+  @include respond-to(laptop) {display: block; width: 50%;}
+  @include respond-to(mobile) {width: 100%; padding: 0; margin-bottom: 0;}
+}
+
+.link-group {display: table-cell; vertical-align: middle; @include Garamond;
+  @include respond-to(laptop) {display: block; margin-bottom: 20px;}
+  @include respond-to(mobile) {display: block; width: 100%;margin-bottom: 0;}
+    li {display: inline-block; font-size: emCal(14px); padding: 0 15px; color: $gold;
+      @include respond-to(mobile) {font-size: emCal(20px);border-top: 1px solid rgba(198, 193, 184, 0.5); display: block; padding: 18px 0; width: 100%; min-height: emCal(60px);}
+    }
+  }
+.link-group-mobile {display: none; padding: 0;
+  @include respond-to(mobile) {display: block;
+  .copyright {color: $silver; font-size: emCal(11px); text-transform: uppercase;}
+  }
+}
+
+.link-group-credits {
+  @include respond-to(laptop) {display: block;}
+}
+.pages-left { padding-right: 20px;
+  @include respond-to(laptop) {display: none;}
+  @include respond-to(mobile) {display: none;}
+   li {color: $lightgold;
+    @include respond-to(mobile) {color: $gold;}
+  }
+}
+.pages-right { padding-left: 20px;
+  @include respond-to(mobile) {display: none;}
+}
+.pages-mid, .pages-right { li {color: $gold;}
+}
+.pages-mid {padding: 0 20px; border-left: 1px solid rgba(223, 218, 209, .6); border-right: 1px solid rgba(223, 218, 209, .6); height: 30px;
+  @include respond-to(laptop) {border: none; padding: 0; height: auto;}
+  @include respond-to(mobile) {border: none; padding: 0; height: auto;}
+}
+.pages-left li, .pages-mid li, .pages-right li {
+    &:first-child { padding-left: 0; }
+    &:last-child { padding-right: 0; }
+}
+
+.ws-logo {background-image: image-url("logo/ws.svg"); width: 15px; height: 15px; background-repeat: no-repeat; display: inline-block; background-position: center center; margin-right: 10px; vertical-align: top;background-size: contain;}

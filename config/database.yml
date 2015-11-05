@@ -1,0 +1,50 @@
+
+test:
+  adapter: postgresql
+  database: tracksmith_test
+  encoding: unicode
+  host: localhost
+  port: <%= ENV['BOXEN_POSTGRESQL_PORT'] || 5432 %>
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+development:
+  adapter: postgresql
+  database: tracksmith_development
+  encoding: unicode
+  host: localhost
+  port: <%= ENV['BOXEN_POSTGRESQL_PORT'] || 5432 %>
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+integration:
+  adapter: postgresql
+  database:
+  host:
+  username:
+  password:
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+staging:
+  adapter: postgresql
+  database:
+  host:
+  username:
+  password:
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  database:
+  host:
+  username:
+  password:
+  encoding: unicode
+  pool: 5
+  timeout: 5000

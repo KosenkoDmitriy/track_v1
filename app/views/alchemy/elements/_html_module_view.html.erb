@@ -1,0 +1,42 @@
+<%- cache(element) do -%>
+
+	<% show_facebook_share = element.ingredient(:show_facebook_share) %>
+	<% show_twitter_share = element.ingredient(:show_twitter_share) %>
+	<% share_text = element.ingredient(:share_text) %>
+	<% call_to_action_text = element.ingredient(:call_to_action_text) %>
+	<% call_to_action_link = element.ingredient(:call_to_action_link) %>
+	<% call_to_action_label = element.ingredient(:call_to_action_label) %>
+	<% share_description = !@page.meta_description.empty? ? @page.meta_description : !@page.title.empty? ? @page.title : 'Running Deserves Better' %>
+	<div class="html_module calls-to-action">
+
+		<div class="call-to-action buy">
+
+			<% if (call_to_action_text != "") && (call_to_action_label != "") && (call_to_action_link) %>
+				<span><%= call_to_action_text %></span>
+				<a href="<%= call_to_action_link %>" class="share-option buy btn btn-primary"><%= call_to_action_label %></a>
+			<% end %>
+
+		</div>
+
+		<div class="call-to-action social">
+
+			<% if (show_facebook_share) %>
+				<a href="http://www.facebook.com/share.php?u=<%= request.original_url %>" class="share-icon footer-fb" target="_blank"></a>
+			<% end %>
+
+			<% if (show_twitter_share) %>
+				<a href="https://twitter.com/share?text=<%=u share_description %>&amp;via=Tracksmith" class="share-icon footer-twitter" target="_blank"></a>
+			<% end %>
+
+			<% if (share_text != "") %>
+				<span><%= share_text %></span>
+			<% end %>
+
+		</div>
+
+	</div>
+
+    <%= element_view_for(element) do |el| -%>
+        <% raw(el.ingredient(:html)) %>
+    <%- end -%>
+<%- end -%>

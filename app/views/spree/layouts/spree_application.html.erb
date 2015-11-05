@@ -1,0 +1,59 @@
+<!-- APPLICATION LAYOUT FOR ALL SPREE PAGES (any page prefaced by /shop) -->
+
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="<%= I18n.locale %>">
+<!--<![endif]-->
+<head data-hook="inside_head">
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= render :partial => 'spree/shared/head' %>
+
+  <%= javascript_include_tag 'modernizr' %>
+  <link rel="stylesheet" type="text/css" href="//cloud.typography.com/725780/763024/css/fonts.css"/>
+
+  <!-- Load Typekit -->
+  <script src="//use.typekit.net/zkt4wzf.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+  
+  <%= stylesheet_link_tag 'application' %>
+
+  <!-- Google Analytics Code -->
+
+  <% if content_for?(:ecomm_ga) %>
+      <%= yield(:ecomm_ga) %>
+  <% end %>
+
+</head>
+<body class="spree-page <%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
+<%= google_tag_manager %>
+
+<div class="container">
+  <%= render :partial => 'alchemy/shared/header' %>
+  <div id="wrapper" data-hook>
+    <%= breadcrumbs(@taxon) %>
+    <div id="content" data-hook>
+      <%= flash_messages %>
+      <%= yield %>
+    </div>
+    <%= yield :templates %>
+  </div>
+</div>
+
+<script>
+    Spree.api_key = <%= raw(try_spree_current_user.try(:spree_api_key).to_s.inspect) %>;
+
+    ga('create', '<%= GOOGLE_ANALYTICS_CONFIG['api_key'] %>', 'auto');
+    ga('require', 'displayfeatures');
+    ga('require', 'ec');
+</script>
+
+<noscript><a href="https://www.olark.com/site/9750-171-10-8135/contact" title="Contact us" target="_blank">Questions?
+  Feedback?</a> powered by
+  <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+<!-- end olark code -->
+</body>
+</html>

@@ -1,0 +1,54 @@
+// Text links
+a { color:$gold; text-decoration: none;
+  &:hover,&:focus {text-decoration:underline; outline: none;
+  }
+}
+
+// Default button
+.btn {color:$gold; text-decoration:none; line-height:1;  text-transform: uppercase;
+  outline:none; @include ProximaSemi;  font-size: emCal(10px); border: none; background-color:#eee9e3; @include transition("background-color .3s, color .3s, border .3s");
+  &:hover, &:focus, &.active {text-decoration: none; color: #fff; background: $gold !important; @include transition("background-color .3s, color .3s, border .3s");}
+  &:active {}
+  &:disabled {color: #c9c6c2;}
+}
+
+// Primary action button
+.btn-primary, .button.primary {@extend .btn; padding:15px 22.5px; border: 3px solid $gold; background-color: transparent; letter-spacing: .3em;
+  @include respond-to(mobile) {width: 100%;}
+  &:hover,&:focus {}
+  &:active {}
+}
+.button.disabled {@extend .btn; padding:15px 22.5px; color: #aaa; border: 3px solid #aaa; background-color: transparent; letter-spacing: .3em;}
+
+// Secondary action button
+.btn-secondary {@extend .btn; height: 30px; width: auto; min-width: 30px; padding: 0 10px; line-height: 30px; color: #888; display: block; background-color: transparent;
+  &:hover,&:focus {}
+  &:active {}
+  &:disabled {}
+}
+
+// Naked button
+.btn-naked {
+  @extend .btn;
+  height: 30px;
+  width: auto;
+  min-width: 30px;
+  padding: 0 10px;
+  line-height: 30px;
+  display: inline-block;
+  background-color: transparent;
+  &:hover,&:focus {
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  &:active {}
+  &:disabled {}
+}
+
+.option-btn {@extend .btn; height: 30px; width: auto; line-height: 30px; color: #888; display: block; background-color: transparent;
+  &:hover,&:focus {}
+  &:active {}
+  &:disabled {}
+}
+
+.selected {border: solid 1px $gold;}

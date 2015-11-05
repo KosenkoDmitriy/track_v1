@@ -1,0 +1,16 @@
+<%- cache(element) do -%>
+    <%= element_view_for(element, :class => "footnote") do |el| -%>
+      <% text = el.ingredient(:text) %>
+      <% stamp_image = el.ingredient(:stamp_image) %>
+       <%if !text.blank? %>
+          <div class="footnote-text">
+            <%= el.render :text %>
+          </div>
+      <% end %>
+      <%if !stamp_image.blank? %>
+        <div class="stamp-image">
+          <%= el.render :stamp_image %>
+        </div>
+      <%- end -%>
+    <%- end -%>
+<%- end -%>

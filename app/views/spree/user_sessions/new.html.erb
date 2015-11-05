@@ -1,0 +1,51 @@
+<section class="login-page">
+  <% if flash[:error] %>
+      <div class="flash errors"><%= flash[:error] %></div>
+  <% end %>
+
+  <% if flash[:notice]; %>
+      <h5 class="flash notice"><%= flash[:notice] %></h5>
+  <% end %>
+
+
+  <% @body_id = 'login' %>
+  <div id="existing-customer">
+    <h6>Existing Customers</h6>
+
+    <h3><%= Spree.t(:login_as_existing) %></h3>
+
+    <div class="line"></div>
+    <div data-hook="login">
+      <%= render :partial => 'spree/shared/login' %>
+      <%#= Spree.t(:or) %>
+      <%#= link_to Spree.t(:create_a_new_account), spree.signup_path %>
+      <%= link_to Spree.t(:forgot_password), spree.recover_password_path %>
+    </div>
+  </div>
+
+  <div class="divider">
+    <div class="vertical"></div>
+    <div class="or">or</div>
+    <div class="vertical"></div>
+  </div>
+
+  <div id="new-customer">
+    <h6>New Users</h6>
+
+    <h3>Create Account </h3>
+
+    <div class="line"></div>
+
+    <div data-hook="signup">
+      <%= form_for resource, :as => :spree_user, :url => spree.registration_path(@user) do |f| %>
+          <div data-hook="signup_inside_form">
+            <%= render :partial => 'spree/shared/user_form', :locals => {:f => f, :source => 'signup'} %>
+            <p><%= f.submit Spree.t(:create), :class => 'btn-primary' %></p>
+          </div>
+      <% end %>
+      <%#= Spree.t(:or) %> <%#= link_to Spree.t(:login_as_existing), spree.login_path %>
+
+    </div>
+
+  </div>
+</section>

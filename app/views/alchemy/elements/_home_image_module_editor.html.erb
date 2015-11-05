@@ -1,0 +1,9 @@
+<%= element_editor_for(element) do |el| -%>
+  <%= el.edit :background_color, :select_values => ['purple', 'white', 'navy', 'crimson', 'gold', 'forest', 'olive'] %>
+  <%= el.edit :image %>
+  <%= el.edit :superheader %>
+  <%= el.edit :text %>
+  <%= el.edit :text_color, :select_values => ['black', 'white', 'gold'] %>
+  <%= el.edit :page_link %>
+
+<%- end -%>

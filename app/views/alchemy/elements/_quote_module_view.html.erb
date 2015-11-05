@@ -1,0 +1,28 @@
+<%- cache(element) do -%>
+<% background = element.ingredient('background_color') %>
+  <%= element_view_for(element, :class => background + " bg-color quote-module") do |el| -%>
+    <% pageLink = el.ingredient(:page_link)%>  
+    <% quote_text_size = el.ingredient(:quote_text_size)%>  
+    <% author_text_size = el.ingredient(:author_text_size)%>  
+
+  <% if @page.page_layout == 'index' && pageLink  %>
+  	<a href="<%= pageLink %>">
+  <%end%>
+
+    <div class="quote-content">
+      <blockquote class="quote <%= el.render :text_color %>" <%if !quote_text_size.blank?%> style="font-size: <%=quote_text_size%>px" <%end %>>
+        <%= el.render :quote %>
+      </blockquote>
+      <div class="quote-author <%= el.render :text_color %>" <%if !author_text_size.blank?%> style="font-size: <%=author_text_size%>px" <%end %>>
+        <%= el.render :author %>
+      </div>
+    </div>
+
+    <% pageLink = el.ingredient(:page_link)%>
+
+  <% if @page.page_layout == 'index' && pageLink  %>
+  </a>
+  <%end%>
+  <%- end -%>
+<%- end -%>
+

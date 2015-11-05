@@ -1,0 +1,63 @@
+.slick-slider,
+.slick-list,
+.slick-track
+  height: 100%
+
+.slick-dots
+  bottom: 10%
+  display: block
+  list-style: none
+  padding: 0
+  position: absolute
+  text-align: center
+  width: 100%
+  li
+    cursor: pointer
+    display: inline-block
+    height: 20px
+    margin: 0 5px
+    padding: 0
+    position: relative
+    width: 20px
+    &.slick-active
+      button
+        background: $gold
+
+    button
+      @include border-radius(100%)
+      background: $white
+      border: 0
+      cursor: pointer
+      display: block
+      font-size: 0
+      height: 10px
+      line-height: 0
+      outline: none
+      padding: 5px
+      width: 10px
+
+.slick-prev,
+.slick-next
+  border: none
+  display: inline-block
+  background: image-url("icons/prev.png") no-repeat center center
+  background-size: 35px 70px
+  height: 70px
+  left: 0px
+  outline: none
+  position: absolute
+  text-indent: -9999px
+  top: 50%
+  width: 35px
+
+  @include respond-to(mobile)
+    display: none !important
+
+.slick-next
+  background-image: image-url("icons/next.png")
+  left: auto
+  right: 0px
+
+.slick-slide
+  img
+    display: inline-block

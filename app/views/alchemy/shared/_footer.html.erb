@@ -1,0 +1,58 @@
+<div class="top-bar bg-color <%= topbg %>">
+  <a href="#top" class="back-to-top">
+    <div class="top-arrow-img">
+      <%= image_tag 'icons/arrow-up.png' %>
+    </div>
+    <div>Back To Top</div>
+  </a>
+</div>
+<div class="footer-bg bg-color
+  <% if bgcolor %><%= bgcolor %>
+  <% end %>"
+     <% if bgimageurl %>style="background: url('<%= bgimageurl %>') no-repeat center center; background-size: cover"
+     <% end %>>
+
+  <div class="footer-email">
+    <%= form_tag('/mailchimp/subscribe_footer', method: "post", id: "footer-form", remote: true, class: "email-form") do %>
+        <%= email_field(:email, :address, {id: "email", placeholder: "Enter Your Email", class: "email-input"}) %>
+        <%= submit_tag("Join", class: "btn-primary", :onClick => "ga('send', 'event', { eventCategory: 'email', eventAction: 'capture', eventLabel: '" + galabel + "', eventValue: 1});") %>
+    <% end %>
+
+    <div id="footer-response"></div>
+    <p>Sign up to be the first to learn about new product introductions, restocks and events.</p>
+
+  </div>
+
+  <div class="social">
+    <h4>Follow Us</h4>
+
+    <div class="social-row">
+      <a class="share-icon footer-twitter" href="http://twitter.com/tracksmith" target="_blank"></a>
+      <a class="share-icon footer-fb" href="http://www.facebook.com/tracksmithrunning" target="_blank"></a>
+      <a class="share-icon footer-instagram" href="http://www.instagram.com/tracksmithrunning" target="_blank"></a>
+      <a class="share-icon footer-tumblr" href="http://tracksmithrunning.tumblr.com" target="_blank"></a>
+    </div>
+  </div>
+  <div class="footer-pages">
+    <ul class="link-group link-group-mobile">
+      <li><a href="mailto:support@tracksmith.com">support@tracksmith.com</a></li>
+    </ul>
+    <ul class="pages-left link-group">
+      <li><span>&copy;</span> 2014 Tracksmith</li>
+    </ul>
+    <ul class="pages-mid link-group">
+      <li><a href="http://www.tracksmith.com/terms">Terms & Conditions</a></li>
+      <li><a href="http://www.tracksmith.com/privacy-policy">Privacy Policy</a></li>
+      <li><a href="http://www.tracksmith.com/about">About Us</a></li>
+      <li><a href="http://www.tracksmith.com/faqs">FAQs</a></li>
+    </ul>
+
+    <ul class="pages-right link-group">
+      <li>781.235.0027</li>
+      <li><a href="mailto:support@tracksmith.com">support@tracksmith.com</a></li>
+    </ul>
+    <ul class="link-group link-group-mobile link-group-credits">
+      <li class="copyright"><span>&copy;</span> 2014 Tracksmith</li>
+    </ul>
+  </div>
+</div>

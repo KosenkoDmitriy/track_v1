@@ -1,0 +1,53 @@
+<div id="minicart">
+  <% @body_id = 'cart' %>
+  <% current_order = Spree::Order.find_by(id: session[:order_id]) %>
+
+  <div class="minicart-wrapper" data-hook="outside_minicart_form">
+    <% if current_order.nil? || current_order.line_items.empty? %>
+
+        <div id="minicart-details" data-hook="minicart_details" class="clearfix">
+          <div data-hook="empty_minicart">
+            <div class="empty"><%= Spree.t(:your_cart_is_empty) %></div>
+            <%= link_to Spree.t(:continue_shopping), '/products', :class => 'btn-primary continue' %>
+          </div>
+        </div>
+
+        <a class="mobile-only close-cart">Close</a>
+
+        <div class="mobile-only" id="update-minicart"></div>
+
+    <% else %>
+
+        <div id="minicart-details" data-hook="minicart_details" class="clearfix">
+          <div class="subtotal"><%= Spree.t(:subtotal) %>:
+            <span class="order-total"><%= current_order.display_item_total %></span></div>
+          <%= link_to Spree.t(:checkout), spree.checkout_path, :class => 'btn-primary checkout', :id => 'checkout-link' %>
+        </div>
+        <a class="mobile-only close-cart">Close</a>
+        <%= form_for current_order, :url => spree.update_cart_path, :html => {:id => 'update-minicart'}, :remote => true do |order_form| %>
+
+            <div data-hook="inside_minicart_form">
+              <div data-hook="minicart_items" class="clearfix">
+                <%#= render :partial => 'spree/shared/error_messages', :locals => { :target => @order } %>
+                <% if @order && @order.errors.any? %>
+
+                    <div id="errorExplanation" class="errorExplanation" data-hook>
+                      <ul>
+                        <% @order.errors.full_messages.each do |msg| %>
+                            <li class="error-message"><%= msg %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+                <ul id='minicart-items' class="clearfix">
+                  <%= order_form.fields_for :line_items do |item_form| %>
+                      <%= render :partial => 'alchemy/shared/minicart_line_items', :locals => {:variant => item_form.object.variant, :line_item => item_form.object, :item_form => item_form, :current_order => current_order} if item_form.object.variant %>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+
+        <% end %>
+    <% end %>
+  </div>
+</div>

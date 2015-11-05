@@ -1,0 +1,34 @@
+<div class="account-page address-new">
+  <ul class="account-links">
+    <li><a class="account-link" href="/shop/account#dashboard">Account Information</a></li>
+    <li><a class="account-link" href="/shop/account#addresses">Address Book</a></li>
+    <li><a class="account-link" href="/shop/account#orders">Order History</a></li>
+    <li><a class="account-link" href="/shop/account#credits">Credits</a></li>
+    <li><a class="account-link" href="/shop/account#returns">Returns &amp; Exchanges</a></li>
+  </ul>
+  <section class="account-info">
+    <div class="new-address">
+      <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @address } %>
+      <%= form_for @address, :html => {:id => "checkout_form_address"} do |f| %>
+      <fieldset>
+        <div class="account-sub-section">
+          <h4>Add New Address</h4>
+          <div class="inner">
+            <%= render :partial => 'spree/addresses/form', :locals => {
+              :address_name => 'address',
+              :address_form => f,
+              :address_type => 'shipping',
+              :address => @address
+            } %>
+          </div>
+          <%= f.submit t(:save, :scope => :address_book), {:class => 'btn-primary'} %>
+        </div>
+      </fieldset>
+      <% end %>
+    </div>
+  </section>
+</div>
+
+
+
+

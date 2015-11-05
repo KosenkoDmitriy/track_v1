@@ -1,0 +1,21 @@
+<nav>
+	<ul class="products-nav">
+		<% if @topVariants.length > 0 %><li><a href="#tops">Tops</a></li><% end %>
+		<% if @bottomVariants.length > 0 %><li><a href="#bottoms">Bottoms</a></li><% end %>
+		<% if @accessoryVariants.length > 0 %><li><a href="#accessories">Accessories</a></li><% end %>
+	</ul>
+</nav>
+
+<div class="products-index-banner">
+	<%= image_tag("banners/tracksmith-" + @banner + ".jpg", class: @banner)%>
+</div>
+
+<section class="all-products">
+	<%= render :partial => 'products/products', locals: { heading: "Tops", variants: @topVariants } %>
+	<%= render :partial => 'products/products', locals: { heading: "Bottoms", variants: @bottomVariants } %>
+	<%= render :partial => 'products/products', locals: { heading: "Accessories", variants: @accessoryVariants } %>
+</section>
+
+<section class="footer">
+<%= render :partial => 'alchemy/shared/footer', locals: { bgcolor: @bgcolor, bgimageurl: @bgimageurl, topbg: @topbg, galabel: @galabel } %>
+</section>

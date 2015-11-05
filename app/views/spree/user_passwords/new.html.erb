@@ -1,0 +1,20 @@
+<section class="login-page">
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @spree_user } %>
+
+<div id="forgot-password">
+  <h3><%= Spree.t(:forgot_password) %></h3>
+  <div class="line"></div>
+
+  <div class="reset"><%= Spree.t(:instructions_to_reset_password) %></div>
+
+  <%= form_for Spree::User.new, :as => :spree_user, :url => spree.reset_password_path do |f| %>
+    <p>
+      <%= f.email_field :email, placeholder: "Email Address"%>
+    </p>
+    <p>
+      <%= f.submit Spree.t(:reset_password), :class => 'button primary' %>
+    </p>
+  <% end %>
+</div>
+
+</section>

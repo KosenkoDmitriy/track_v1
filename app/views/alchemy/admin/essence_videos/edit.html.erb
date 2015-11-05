@@ -1,0 +1,8 @@
+<%= alchemy_form_for [:admin, @essence_video] do |f| %>
+  <%= f.input :width %>
+  <%= f.input :height %>
+  <%= f.input :allow_fullscreen %>
+  <%= f.input :auto_play %>
+  <%= f.input :show_navigation %>
+  <%= f.submit _t(:save) %>
+<% end %>

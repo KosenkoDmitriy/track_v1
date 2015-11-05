@@ -1,0 +1,33 @@
+defaults: &defaults
+  host: tracksmith.com
+
+# Cloudfront isn't used in development.
+development:
+  host: s3.amazonaws.com
+  image_domain: tracksmith-images-development
+  attachments_domain: tracksmith-attachments-development
+  protocol: http
+
+test:
+  <<: *defaults
+  image_domain: development-images
+  attachments_domain: development-attachments
+  protocol: http
+
+integration:
+  <<: *defaults
+  image_domain: integration-images
+  attachments_domain: integration-attachments
+  protocol: http
+
+staging:
+  <<: *defaults
+  image_domain: staging-images
+  attachments_domain: staging-attachments
+  protocol: http
+
+production:
+  <<: *defaults
+  image_domain: images
+  attachments_domain: attachments
+  protocol: https

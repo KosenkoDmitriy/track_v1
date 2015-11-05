@@ -1,0 +1,12 @@
+<div id="referral_step_01">
+  <%= form_tag '/referrals', method: :post, id: 'referral_form', class: 'email-form', remote: true do %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <p class="gold">Please enter:</p>
+    <%= email_field :referral, 'referring', class: 'email-input', placeholder: 'Your Email', required: true %>
+    <p class="gold">And then enter:</p>
+    <input class="email-input" id="referral_email1" name="referral[email1]" placeholder="Your Friend's Email Address" type="email", required="required">
+    <input class="email-input" id="referral_email2" name="referral[email2]" placeholder="Another Friend's Email Address" type="email">
+    <input class="email-input" id="referral_email3" name="referral[email3]" placeholder="1 More Friend's Email Address" type="email">
+    <input class="button primary" type="submit" value="Submit">
+  <% end %>
+</div>

@@ -1,0 +1,15 @@
+<div class="home-row clearfix">
+<%- cache(element) do -%>
+  <%= element_view_for(element) do |el| -%>
+
+  <%= element.contents.length %>
+
+    <%- element.contents.where(name: ['product_image', 'lifestyle_image', 'copy']).each do |content| -%>
+    <div class="content-block float-left">
+      <%= content.name %>
+  
+    </div>
+    <%- end -%>
+  <%- end -%>
+<%- end -%>
+</div>

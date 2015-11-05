@@ -1,0 +1,6 @@
+<section class="page-content footer-page">
+  <%= render_elements only: 'page_title' %>
+   <%= render_elements except: [ 'page_title' ,'footnote', 'footer'] %>
+   <%= render_elements only: 'footnote'%>
+   <%= render_elements only: 'footer'%>
+</section>

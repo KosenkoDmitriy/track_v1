@@ -1,0 +1,426 @@
+# == In this configuration you setup Alchemy´s element layouts.
+#
+# For further informations please see http://guides.alchemy-cms.com/create_elements.html
+
+
+#################################################
+# All Pages
+#################################################
+- name: footer
+  unique: true
+  contents:
+  - name: top_bar_background
+    type: EssenceSelect
+  - name: background_color
+    type: EssenceSelect
+    settings:
+      deletable: true
+  - name: background_image
+    type: EssencePicture
+    settings:
+      deletable: true
+  - name: google_analytics_event_label
+    type: EssenceText
+
+#################################################
+# Home Page
+#################################################
+
+- name: home_hero
+  unique: true
+  cache: false
+  contents:
+  - name: headline
+    type: EssenceRichtext
+  - name: text_color
+    type: EssenceSelect
+  - name: logo_image
+    type: EssencePicture
+  - name: background_color
+    type: EssenceSelect
+  - name: background_image
+    type: EssencePicture
+  - name: mobile_image
+    type: EssencePicture
+  - name: overlay?
+    type: EssenceBoolean
+
+- name: home_image_module
+  contents:
+  - name: background_color
+    type: EssenceSelect
+  - name: image
+    type: EssencePicture
+  - name: superheader
+    type: EssenceText
+  - name: text
+    type: EssenceRichtext
+  - name: text_color
+    type: EssenceSelect
+  - name: page_link
+    type: EssenceLink
+    take_me_for_preview: true
+
+- name: email_capture_expanded
+  unique: true
+  contents:
+  - name: background_color
+    type: EssenceSelect
+  - name: headline
+    type: EssenceRichtext
+  - name: text_above
+    type: EssenceRichtext
+  - name: text_below
+    type: EssenceRichtext
+    take_me_for_preview: true
+  - name: text_alignment
+    type: EssenceSelect
+  - name: text_color
+    type: EssenceSelect
+  - name: module_height
+    type: EssenceText
+    available_contents:
+  - name: stamp_image
+    type: EssencePicture
+    settings:
+      deletable: true
+  - name: google_analytics_event_label
+    type: EssenceText
+  - name: mailchimp_list_id
+    type: EssenceText
+
+- name: email_capture
+  unique: true
+  contents:
+  - name: background_color
+    type: EssenceSelect
+  - name: text
+    type: EssenceRichtext
+    take_me_for_preview: true
+    available_contents:
+  - name: stamp_image
+    type: EssencePicture
+    settings:
+      deletable: true
+  - name: google_analytics_event_label
+    type: EssenceText
+  - name: mailchimp_list_id
+    type: EssenceText
+
+- name: email_capture_modal
+  unique: true
+  contents:
+  - name: style
+    type: EssenceSelect
+  - name: background_color
+    type: EssenceSelect
+  - name: headline
+    type: EssenceRichtext
+    do_not_index: true
+    take_me_for_preview: true
+  - name: text
+    type: EssenceRichtext
+    do_not_index: true
+  - name: google_analytics_event_label
+    type: EssenceText
+  - name: mailchimp_list_id
+    type: EssenceText
+
+- name: home_text_module
+  contents:
+  - name: background_color
+    type: EssenceSelect
+  - name: superheader
+    type: EssenceText
+  - name: text
+    type: EssenceRichtext
+  - name: text_color
+    type: EssenceSelect
+  - name: page_link
+    type: EssenceLink
+    take_me_for_preview: true
+    available_contents:
+  - name: stamp_image
+    type: EssencePicture
+    unique: true
+    settings:
+      deletable: true
+
+
+
+- name: event_row
+  contents:
+  - name: event_name
+    type: EssenceText
+  - name: event_image
+    type: EssencePicture
+  - name: event_text
+    type: EssenceRichtext
+  - name: event_where
+    type: EssenceText
+  - name: event_when
+    type: EssenceText
+  - name: event_align
+    type: EssenceSelect
+
+- name: grid_row
+  available_contents:
+  - name: product
+    type: EssenceSpreeProduct
+    settings:
+      deletable: true
+  - name: image
+    type: EssencePicture
+    settings:
+      deletable: true
+  - name: copy
+    type: EssenceRichtext
+    settings:
+      deletable: true
+
+#################################################
+# Product/Interior Pages
+#################################################
+
+- name: html_module
+  contents:
+  - name: html
+    type: EssenceHtml
+  - name: call_to_action_text
+    type: EssenceText
+  - name: call_to_action_label
+    type: EssenceText
+  - name: call_to_action_link
+    type: EssenceText
+  - name: share_text
+    type: EssenceText
+  - name: show_facebook_share
+    type: EssenceBoolean
+  - name: show_twitter_share
+    type: EssenceBoolean
+
+- name: hero_module
+  cache: false
+  unique: true
+  contents:
+  - name: headline
+    type: EssenceRichtext
+  - name: text_color
+    type: EssenceSelect
+  - name: background_image
+    type: EssencePicture
+  - name: mobile_image
+    type: EssencePicture
+  - name: overlay?
+    type: EssenceBoolean
+  - name: background_color
+    type: EssenceSelect
+  - name: video
+    type: EssenceLink
+  - name: module_height
+    type: EssenceText
+  - name: page_link
+    type: EssenceLink
+    take_me_for_preview: true
+  - name: image_title
+    type: EssenceText
+
+
+- name: product_module
+  unique: true
+  contents:
+  - name: spree_product
+    type: EssenceSpreeProduct
+  - name: backorder_info
+    type: EssenceRichtext
+  - name: show_facebook_share
+    type: EssenceBoolean
+  - name: show_twitter_share
+    type: EssenceBoolean
+
+- name: jumbo_product_module
+  cache: false
+  contents:
+  - name: page_link
+    type: EssenceLink
+    take_me_for_preview: true
+  - name: product_image
+    type: EssencePicture
+  - name: mobile_image
+    type: EssencePicture
+  - name: superheader
+    type: EssenceText
+  - name: headline
+    type: EssenceRichtext
+  - name: text
+    type: EssenceRichtext
+  - name: text_alignment
+    type: EssenceSelect
+  - name: text_color
+    type: EssenceSelect
+  - name: module_height
+    type: EssenceText
+  available_contents:
+  - name: bullet
+    type: EssenceRichtext
+    settings:
+      deletable: true
+  - name: stamp_image
+    type: EssencePicture
+    unique: true
+    settings:
+      deletable: true
+
+- name: background_image_module
+  cache: false
+  contents:
+  - name: background_image
+    type: EssencePicture
+  - name: mobile_image
+    type: EssencePicture
+  - name: overlay?
+    type: EssenceBoolean
+  - name: superheader
+    type: EssenceText
+  - name: headline
+    type: EssenceRichtext
+  - name: text
+    type: EssenceRichtext
+  - name: text_alignment
+    type: EssenceSelect
+  - name: text_color
+    type: EssenceSelect
+  - name: module_height
+    type: EssenceText
+  - name: page_link
+    type: EssenceLink
+    take_me_for_preview: true
+  available_contents:
+  - name: bullet
+    type: EssenceRichtext
+    settings:
+      deletable: true
+  - name: stamp_image
+    type: EssencePicture
+    unique: true
+    settings:
+      deletable: true
+  - name: image_title
+    type: EssenceText
+
+- name: background_color_module
+  contents:
+  - name: superheader
+    type: EssenceText
+  - name: headline
+    type: EssenceRichtext
+  - name: text
+    type: EssenceRichtext
+  - name: background_color
+    type: EssenceSelect
+  - name: text_alignment
+    type: EssenceSelect
+  - name: text_color
+    type: EssenceSelect
+  - name: module_height
+    type: EssenceText
+  - name: page_link
+    type: EssenceLink
+    take_me_for_preview: true
+  available_contents:
+  - name: bullet
+    type: EssenceRichtext
+    settings:
+      deletable: true
+  - name: stamp_image
+    type: EssencePicture
+    unique: true
+    settings:
+      deletable: true
+
+
+- name: image_row
+  contents:
+  - name: page_link
+    type: EssenceLink
+    take_me_for_preview: true
+  - name: image
+    type: EssencePicture
+  available_contents:
+  - name: image
+    type: EssencePicture
+    settings:
+      deletable: true
+
+
+- name: quote_module
+  contents:
+  - name: quote
+    type: EssenceText
+  - name: author
+    type: EssenceText
+  - name: background_color
+    type: EssenceSelect
+  - name: image
+    type: EssencePicture
+  - name: page_link
+    type: EssenceLink
+    take_me_for_preview: true
+  - name: text_color
+    type: EssenceSelect
+  - name: quote_text_size
+    type: EssenceText
+  - name: author_text_size
+    type: EssenceText
+
+- name: essay_intro_module
+  contents:
+  - name: essay_superheader
+    type: EssenceText
+  - name: article_title
+    type: EssenceText
+  - name: intro_blurb
+    type: EssenceRichtext
+  - name: credit_title
+    type: EssenceText
+  - name: credit_author
+    type: EssenceText
+  available_contents:
+  - name: credit_title
+    type: EssenceText
+    settings:
+      deletable: true
+  - name: credit_author
+    type: EssenceText
+    settings:
+      deletable: true
+
+- name: essay_body_module
+  contents:
+  - name: paragraph
+    type: EssenceRichtext
+
+############ Footer Pages #################
+
+- name: page_title
+  unique: true
+  contents:
+  - name: headline
+    type: EssenceText
+
+- name: footer_page_block
+  contents:
+  - name: section_header
+    type: EssenceText
+  - name: text
+    type: EssenceRichtext
+
+- name: footnote
+  unique: true
+  contents:
+  - name: text
+    type: EssenceRichtext
+  - name: stamp_image
+    type: EssencePicture
+    settings:
+      deletable: true

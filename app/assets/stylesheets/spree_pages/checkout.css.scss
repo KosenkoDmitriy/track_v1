@@ -1,0 +1,162 @@
+#spree-cart {display:none;}
+
+#checkout {position: relative; top: 160px; color: #222; @include AGConLight; font-size: emCal(23px); overflow: hidden;
+	@include respond-to(mobile) {top: 91px;}
+}
+
+// states wrapper - most styles set by JS
+.states-wrapper {position: relative; left: 0;}
+
+.checkout-breadcrumbs {position: fixed; top: 71px; width: 100%; background-color: $offwhite; z-index: 99; @include Didot; font-size: emCal(20px); list-style: none; border-bottom: 2px solid #ddd; height: 90px; line-height: 90px; text-align: center; margin: 0;
+	@include respond-to(mobile) {display: none;}
+	@include respond-to(tablet) {padding: 0; font-size: emCal(16px);}
+	li {display: inline-block; text-transform: uppercase; margin-right: 55px; cursor: pointer; color: #000;
+		@include respond-to(tablet) {margin-right: 25px;}
+		a {color: #000;}
+		.number {@include AGConLight; display: inline-block; background-color: #ddd; height: 30px; width: 30px; border-radius: 50%; color: $offwhite; background-color: $gold; line-height: 0; padding: 15px 0; margin-right: 10px; vertical-align: middle;
+		@include respond-to(tablet) {height: 20px; width: 20px; padding: 10px 0; margin-right: 5px;}
+		}
+
+		&:last-child {margin-right: 0;}
+		&[class*='current'] .state {border-bottom: 2px solid #000;}
+		&:hover .state {border-bottom: 2px solid #000;
+			a {text-decoration: none;}
+		}
+		&[class*='disabled'] {color: #ddd; cursor: default;
+			.number {background-color: #ddd;}
+			&:hover .state {border: none;}
+		}
+
+	}
+}
+
+.checkout-wrapper {width: 360px; margin: 50px auto 250px;
+	@include respond-to(mobile) {width: 100%; padding: 0 25px; margin: 35px auto 150px;}
+	.line {width: 60px; border-bottom: 3px solid #222; margin: 0 auto 45px; }
+  .state-title {margin-bottom: 20px; text-align: center; color: #000;}
+  fieldset {border: none; padding: 0; margin: 0;}
+
+
+}
+#checkout-summary {display: none !important;}
+.checkout_content {height: 100%; float: left; opacity: 1; @include transition(opacity 0.3s ease);
+  &.disabled-step {opacity: .5; margin: 0; @include transition(opacity 0.3s ease);}
+  h3 {color: #848485;
+		@include respond-to(mobile) {font-size: emCal(40px);}
+  }
+  }
+
+#billing, #shipping, #shipping_method, #payment, #order_details, #order_summary {
+margin: 0px; border: none; padding: 0px;
+
+	legend {@include Didot; font-size: emCal(23px); color: #222; margin-bottom: 10px;}
+	label {text-transform: none; color: #222; position: relative; font-size: emCal(23px);}
+ }
+
+#billing {margin-bottom: 50px; }
+
+// billing and shipping addresses
+.saved-address {display: block; margin-bottom: 40px; padding-bottom: 15px; border-bottom: 1px solid #ddd; clear: both;
+	.edit-link {float: right; font-size: emCal(23px);}
+}
+#bfirstname, #blastname, #sfirstname, #slastname, #bstate, #bzipcode, #sstate, #szipcode { width: 175px; float: left;
+	@include respond-to(mobile) {width: 100%; float: none;}
+}
+#bfirstname, #sfirstname, #bstate, #sstate {margin-right: 10px;
+	@include respond-to(mobile) {margin-right: 0;}
+}
+#baddress1, #saddress1, #bcountry, #scountry {clear: both;}
+
+#billing {
+  input[type="text"], input[type="email"],
+  input[type="tel"], input[type="number"],
+  select, textarea {
+    width: 100%; @include AGConLight; font-size: emCal(23px);
+
+  }
+}
+
+// SHIPPING METHODS
+#shipping_method {
+	.shipment {margin-bottom: 60px; border-top: 1px solid #222; padding-top: 40px;
+		&:first-child {padding-top: 0; border: none;}
+		.backordered {@include AGReg; font-size: emCal(18px); text-align: center; margin-bottom: 50px; }
+
+	}
+	legend {display: none;}
+	label {color: #222;}
+	.stock-location {display: none;}
+	.stock-shipping-method-title {display: none;}
+	thead {@include AGReg; text-transform: uppercase; font-weight: bold; font-size: emCal(11px); letter-spacing:.35em;}
+	td {@include AGConLight; height: 60px; padding: 30px 0;}
+	td.item-image {padding-right: 15px;}
+	tr {border-bottom: 2px solid #ddd;}
+	th {padding-bottom: 30px; text-align: left;}
+
+	.shipping-methods {margin-top: 45px;
+
+	}
+}
+
+#payment {
+	label {color: #222; margin-left: 15px; }
+	.card-info-wrapper {clear:both; overflow: hidden; padding: 25px 0; border-bottom: 2px solid #ddd;}
+	.card-info {float: left; width: 300px;}
+	.card-select {float: right; width: 15px; position: relative; right: 1px;}
+}
+
+#order_details, #order_summary{
+	legend {display: none;}
+	h6 {@include Didot; font-size: emCal(23px); margin: 0 0 15px 0; border-bottom: 2px solid #ddd; }
+	.columns.four {margin-bottom: 50px; }
+	thead {@include AGReg; text-transform: uppercase; font-weight: bold; font-size: emCal(11px); letter-spacing:.35em;}
+	table {width: 100%; border-top: 4px solid #ddd;}
+	thead tr {border-bottom: 1px solid #ddd;}
+	thead th {padding: 15px 0;}
+	tbody tr {border-bottom: 2px solid #ddd;}
+	tbody td {padding: 30px 0;}
+	th.qty, th.total {text-align: left;}
+	td.item-image {padding-right: 15px;}
+	tfoot td {padding: 5px 0;}
+	#order-total {border-top: 2px solid #ddd; font-weight: 400;
+		td {padding: 10px 0;}
+	}
+
+}
+
+input[value="Place Order"] {width: 100%;}
+.international {margin-top: 40px; font-size: emCal(18px);}
+
+#order_summary {width: 360px; margin: 60px auto 250px; position: relative; top: 70px; color: #222; @include AGConLight; font-size: emCal(23px);
+	@include respond-to(mobile) {width: 100%; padding: 0 25px; margin: 35px auto 150px;}
+	h4 {color: #222; font-size: emCal(40px); }
+	h6 {text-transform: capitalize;}
+	.line {width: 60px; border-bottom: 3px solid #222; margin: 0 0 45px; }
+	.success-wrapper {padding: 35px; background-color: #ece8e2; text-align: center; margin-bottom: 40px;}
+}
+
+.tracksmith-checkout-test-breadcrumb {
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+	background: #000;
+	float: left;
+	cursor: pointer;
+}
+
+.international-shipping {
+	display: none;
+
+	&.show {
+		display: block;
+	}
+
+	p {
+		font-size: 90%;
+	}
+}
+
+
+
+
+

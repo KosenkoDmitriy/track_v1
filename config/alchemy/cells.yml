@@ -1,0 +1,2 @@
+- name: image_row_cell
+  elements: [image_block]

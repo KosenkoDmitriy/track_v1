@@ -1,0 +1,34 @@
+
+
+<%= form_tag "/shop/return_order", id: "ts-return-form", remote: true do %>
+	<div class='radio'>
+		<div> Please select: </div>
+		<p>
+		<%= radio_button_tag(:type, "return") %>
+		<%= label_tag(:type_return, "Return", class: 'return_label') %>
+
+		<span class="divider">
+			<span class="horizontal"></span><span class="or">or</span><span class="horizontal"></span>
+		</span>
+		<%= radio_button_tag(:type, "exchange") %>
+		<%= label_tag(:type_exchange, "Exchange", class: 'return_label') %>
+		<p>
+	</div>
+	<p>
+  <%= text_field_tag "name", nil,  placeholder: "* Full Name" %></p>
+  <p><%= email_field_tag "email", @user.email, placeholder: "* Email" %></p>
+
+  <!-- creating array of order numbers -->
+	<% order_number_array = @user.orders.map {|order| [order.number, order.number]}%>
+	<p><%= select_tag "order_number", options_for_select(order_number_array), {prompt: '* Select Order Number'} %></p>
+
+	<p><%= text_field_tag "replacing", nil,  placeholder: "* Item Exchanging (ex. The Grayboy)", class: 'exchange-input' %></p>
+	<p><%= text_field_tag "desired", nil, placeholder: "* Desired Variant (ex. Olive, Small)", class: 'exchange-input' %></p>
+
+  <p><%= text_area_tag "comments", nil,  {:placeholder => "Additional Comments"} %></p>
+  <%= hidden_field_tag "email", @user.email %>
+
+  <%= submit_tag "Send", {:class => "btn-primary"}%>
+	<p class="required">* Required</p>
+
+<% end %>

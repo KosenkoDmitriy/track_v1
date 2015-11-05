@@ -1,0 +1,13 @@
+machine:
+  ruby:
+    version: 2.0.0-p598
+
+deployment:
+  production:
+    branch: integration
+    commands:
+      - bundle exec cap integration deploy
+  staging:
+    branch: staging
+    commands:
+      - bundle exec cap staging deploy

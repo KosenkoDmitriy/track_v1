@@ -1,0 +1,7 @@
+<%= element_editor_for(element) do |el| -%>
+  <%= el.edit :top_bar_background, :select_values => ['purple', 'white', 'navy', 'crimson', 'forest', 'olive'] %>
+  <%= el.edit :background_color, :select_values => ['purple', 'white', 'navy', 'crimson', 'gold', 'forest', 'olive'] %>
+  <%= el.edit :background_image %>
+      <div class="hint" style="position: relative; top: -5px; color: green; margin-bottom: 10px;">&#8593; Google Analytics Unique Identifer </div>
+  <%= el.edit :google_analytics_event_label %>
+<%- end -%>

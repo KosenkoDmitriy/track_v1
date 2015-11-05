@@ -1,0 +1,14 @@
+development:
+  api_key: 
+
+test:
+  api_key:
+
+integration:
+  api_key:
+
+staging:
+  api_key:
+
+production:
+  api_key:

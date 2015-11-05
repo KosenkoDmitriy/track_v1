@@ -1,0 +1,207 @@
+- @body_class = "is-homepage"
+
+.page-content.homepage
+  section#lookbook
+    .background_image_module
+      a href="http://deepbo.tracksmith.com"
+        .bg-image style=("background: url('#{asset_path 'homepage/lookbook/bg.jpg'}') no-repeat center center; background-size: cover; height: 100% ")
+          .module-content.bottom-left.text-left.white
+            .superheader 
+              p CO-ED TRACKSMITH:
+            .module-headline
+              p DEEP BO
+            .module-headline
+              p LOOKBOOK
+
+  section
+    .image_row
+      .table-row
+        .image-row-block
+          .background_image_module.home_image_module
+            .bg-image.medium-image style=("background: url('#{asset_path 'homepage/modules/shop_women.jpg'}') no-repeat center center; background-size: cover;")
+              .module-content.center-center.white
+                .module-cta
+                  a.btn-primary href="/women"
+                    | SHOP WOMEN
+
+        .image-row-block
+          .background_image_module.home_image_module
+            .bg-image.medium-image style=("background: url('#{asset_path 'homepage/modules/shop_men.jpg'}') no-repeat center center; background-size: cover;")
+              .module-content.center-center.white
+                .module-cta
+                  a.btn-primary href="/men"
+                    | SHOP MEN
+
+  section
+    .background_image_module.home_image_module
+      a href="/meter"
+        .bg-image.medium-image style=("background: url('#{asset_path 'homepage/modules/meter_laydowns.jpg'}') no-repeat center center; background-size: cover;")
+          .module-content.bottom-left.text-left.navy
+            .superheader The Runner's Review 
+            .module-headline
+              p METER #01
+            .module-text
+              p ANNUAL SUBSCRIPTION NOW AVAILABLE
+
+
+  section
+    .image_row
+      .table-row
+        .image-row-block
+          .background_image_module
+            a href="/products/w-van-cortlandt-singlet"
+              .bg-image style=("background: url('#{asset_path 'homepage/modules/womens-tops.jpg'}') no-repeat center center; background-size: cover; height: 700px ")
+                .overlay
+                .module-content.bottom-left.text-left.white
+                  .module-headline
+                    p EARN YOUR<br />SASH
+                  .module-text
+                    p SHOP VAN CORTLANDT SINGLET
+
+        .image-row-block
+          .background_image_module
+            .bg-image style=("background: url('#{asset_path 'homepage/modules/womens-products.jpg'}') no-repeat center center; background-size: cover; height: 350px ")
+              .module-content.center-center.white
+                .module-cta
+                  a.btn-primary href="/women"
+                    | SHOP WOMEN
+
+          .background_image_module
+            a href="/products/w-grayboy-tank"
+              .bg-image style=("background: url('#{asset_path 'homepage/modules/womens-grey-tank.jpg'}') no-repeat center center; background-size: cover; height: 350px ")
+
+
+  section
+    .product-slider-module.purple
+      .module-headline
+        p VAN CORTLANDT<br/>SHORTS
+
+      .product-slider
+        div
+          a href="/products/w-van-cortlandt-shorts"
+            = image_tag "homepage/products/women-shorts-01.png"
+        div
+          a href="/products/w-van-cortlandt-shorts"
+            = image_tag "homepage/products/women-shorts-02.png"
+        div
+          a href="/products/w-van-cortlandt-shorts"
+            = image_tag "homepage/products/women-shorts-03.png"
+
+      .cta
+        a.btn-primary href="/women#bottoms"
+          | SHOP WOMEN'S SHORTS
+
+  section
+    .image_row
+      .table-row
+        .image-row-block
+          .background_image_module.home_image_module.brand-intro
+            .bg-image.medium-image
+              .module-content.center-center.gold
+                .module-text
+                  = image_tag 'logo/logo-gold.png', width: "55", style: "display: inline-block"
+                  p Tracksmith is a premium performance running brand located at the halfway mark of the Boston Marathon. We make the highest quality running clothes and celebrate the amateur spirit of the sport.
+
+        .image-row-block
+          .background_image_module.home_image_module
+            .bg-image.medium-image style=("background: url('#{asset_path 'homepage/modules/twelve-miles.jpg'}') no-repeat center center; background-size: cover;")
+
+  section
+    .image_row
+      .table-row
+        .image-row-block
+          .background_image_module
+            .bg-image style=("background: url('#{asset_path 'homepage/modules/shop_main_charles_cheater.jpg'}') no-repeat center center; background-size: cover; height: 700px ")
+              .overlay
+              .module-content.bottom-left.text-left.white
+                .superheader CHEAT NATURE
+                .module-headline
+                  p CHARLES CHEATER
+
+        .image-row-block
+          .background_image_module
+            .bg-image style=("background: url('#{asset_path 'homepage/modules/shop_women_charles_cheater.jpg'}') no-repeat center center; background-size: cover; height: 350px ")
+              .module-content.center-center.white
+                .module-cta
+                  a.btn-primary href="/products/w-charles-cheater"
+                    | SHOP WOMEN
+
+          .background_image_module
+            .bg-image style=("background: url('#{asset_path 'homepage/modules/shop_men_charles_cheater.jpg'}') no-repeat center center; background-size: cover; height: 350px ")
+              .module-content.center-center.white
+                .module-cta
+                  a.btn-primary href="/products/charles-cheater"
+                    | SHOP MEN
+
+  section
+    .image_row
+      .table-row
+        .image-row-block
+          .background_image_module
+            a href="/men"
+              .bg-image style=("background: url('#{asset_path 'homepage/modules/mens-products-01.jpg'}') no-repeat center center; background-size: cover; height: 350px ")
+                .overlay
+                .module-content.bottom-left.text-left.white
+                  .superheader HIT THE ROAD
+                  .module-headline
+                    p Spring Staples
+
+          .background_image_module
+            .bg-image style=("background: url('#{asset_path 'homepage/modules/mens-products-02.jpg'}') no-repeat top center; background-size: cover; height: 350px ")
+              .module-content.center-center.white
+                .module-cta
+                  a.btn-primary href="/men"
+                    | SHOP MEN
+
+        .image-row-block
+          .background_image_module
+            a href=" /products/falmouth-shorts"
+              .bg-image style=("background: url('#{asset_path 'homepage/modules/mens-shorts-01.jpg'}') no-repeat center center; background-size: cover; height: 700px ")
+                .module-content.bottom-left.text-left.white
+                  .module-headline
+                    p FOR THE
+                  .module-headline
+                    p EVERYDAY
+                  .module-text
+                    p SHOP FALMOUTH SHORTS
+
+  section
+    .product-slider-module.purple
+      .module-headline
+        p LEG SPEED
+
+      .product-slider
+        div
+          a href="/products/van-cortlandt-short"
+            = image_tag "homepage/products/men-shorts-01.png"
+        div
+          a href="/products/falmouth-shorts"
+            = image_tag "homepage/products/men-shorts-02.png"
+        div
+          a href="/products/longfellow-short"
+            = image_tag "homepage/products/men-shorts-03.png"
+
+      .cta
+        a.btn-primary href="/men#bottoms"
+          | SHOP MEN'S SHORTS
+
+  section
+    .image_row
+      .table-row
+        .image-row-block
+          .background_image_module.home_image_module
+            a href="/products/grayboy"
+              .bg-image.medium-image style=("background: url('#{asset_path 'homepage/modules/mens-grey-shirt.jpg'}') no-repeat center center; background-size: cover;")
+                .module-content.bottom-left.text-left.white
+                  .module-headline
+                    p EARN IT<br />WITH SWEAT
+                  .module-text
+                    p SHOP GRAYBOY
+
+        .image-row-block
+          .background_image_module.home_image_module
+            a href="/products/grayboy"
+              .bg-image.medium-image style=("background: url('#{asset_path 'homepage/modules/mens-shorts-02.jpg'}') no-repeat center center; background-size: cover;")
+
+  = render 'alchemy/shared/newsletter_modal'
+  = render_elements only: 'footer'

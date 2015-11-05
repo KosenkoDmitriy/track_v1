@@ -1,0 +1,51 @@
+<section class="page-content referral-page">
+  <div class="background_image_module">
+    <div class="overlay"></div>
+    <div class="bg-image" style="background: url('<%= asset_path('referral/hero_01.jpg') %>') no-repeat center center; background-size: cover; height: 450px ">
+      <div class="module-content center-center white">
+        <div class="superheader"></div>
+        <div class="module-headline">
+          <p>Spread the word for free shipping</p>
+        </div>
+        <div class="module-text ">
+          <p><em>Enter the email addresses of three female running friends to give them - and you - free shipping</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="referral_steps" class="white bg-color background_color_module">
+    <%= render partial: 'form' %>
+    <%= render partial: 'confirmation' %>
+  </div>
+  <div class="image_row">
+    <div class="table-row">
+      <div class="image-row-block">
+      </div>
+      <div class="image-row-block">
+        <img src="http://s3.amazonaws.com/tracksmith-images-development/2015/01/22/00/53/46/807/hare_womens2.png">
+      </div>
+      <div class="image-row-block">
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  $.validator.addMethod("customEmailValidation", function(value, element) {
+    var inputVal = []
+
+    $("#referral_form").find('input.email-input').each(function(idx) {
+      inputVal.push($(this).val());
+    });
+
+    return (inputVal.indexOf(value) === inputVal.lastIndexOf(value));
+
+  }, "An email address can't be used more than once.");
+
+  $("#referral_form").validate({
+    rules: {
+      "referral[referring]" : "customEmailValidation",
+      "referral[email1]"    : "customEmailValidation"
+    }
+  });
+</script>

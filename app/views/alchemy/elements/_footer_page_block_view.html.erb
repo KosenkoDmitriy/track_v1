@@ -1,0 +1,13 @@
+<% cache(element) do %>
+  <%= element_view_for(element) do |el| %>
+  <% section_header = el.ingredient(:section_header) %>
+  <%if !section_header.blank? %>
+    <div class="section-header">
+      <%= el.render :section_header %>
+    </div>
+    <% end %>
+    <div class="text">
+      <%= el.render :text %>
+    </div>
+  <% end %>
+<% end %>

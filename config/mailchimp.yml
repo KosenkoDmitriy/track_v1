@@ -1,0 +1,29 @@
+development:
+  api_key:
+  main_mail_list:
+  invitee_mail_list:
+  product_notification_mail_list:
+
+test:
+  api_key:
+  main_mail_list:
+  invitee_mail_list:
+  product_notification_mail_list:
+
+integration:
+  api_key:
+  main_mail_list:
+  invitee_mail_list:
+  product_notification_mail_list:
+
+staging:
+  api_key:
+  main_mail_list:
+  invitee_mail_list:
+  product_notification_mail_list:
+
+production:
+  api_key:
+  main_mail_list:
+  invitee_mail_list:
+  product_notification_mail_list:

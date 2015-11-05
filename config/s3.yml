@@ -1,0 +1,30 @@
+defaults: &defaults
+  access_key_id:
+  secret_access_key:
+  permissions: public-read
+  host: s3.amazonaws.com/
+
+development:
+  <<: *defaults
+  images_bucket:
+  attachments_bucket:
+
+test:
+  <<: *defaults
+  images_bucket:
+  attachments_bucket:
+
+integration:
+  <<: *defaults
+  images_bucket:
+  attachments_bucket:
+
+staging:
+  <<: *defaults
+  images_bucket:
+  attachments_bucket:
+
+production:
+  <<: *defaults
+  images_bucket:
+  attachments_bucket:

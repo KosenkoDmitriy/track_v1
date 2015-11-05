@@ -1,0 +1,88 @@
+#mfPreviewBar {display: none;}
+
+$offwhite: #fefcf9;
+$offwhite2: #fefcf9;
+$white: #fffbf7;
+$gold: #a68f6b;
+$lightgold: #7e6d52;
+$goldgrey: #a2998b;
+$lightpurple: #321836;
+$navy : #0f1726;
+$border: #ddd;
+$grey: #555;
+$purple: #221824;
+$darkpurple: #241f1f;
+// purpleblack is for the essay body. Close enough to be black though..
+$purpleblack: #242425;
+$silver: #888888;
+$red: #a10000;
+
+// New colors.
+$crimson: #550000;
+$olive: #666633;
+$forest: #003300;
+
+$optionbgcolor: #141b2a;
+
+// turquoise for notifications, etc. 
+$turquoise: #29aae2;
+
+$emBase: 16px !default;
+
+// (em calculator)
+@function emCal($pixelBasedNum){
+  @return $pixelBasedNum / $emBase * 1rem;
+}
+
+// TYPE
+
+@mixin Conquer {font-family: "aw-conqueror-didot",serif; font-style: normal; font-weight: 300;}
+@mixin Didot {font-family: 'DidotLTStd-Roman', serif; font-style: normal; font-weight: normal;}
+@mixin AGConLight  {font-family: "akzidenz-grotesk-condensed",sans-serif; font-style: normal; font-weight: 300;}
+@mixin AGConMed {font-family: "akzidenz-grotesk-condensed",sans-serif; font-style: normal; font-weight: 500;}
+@mixin AGReg {font-family: "akzidenz-grotesk",sans-serif; font-style: normal; font-weight: 400;}
+
+@mixin Garamond {font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;}
+
+ @mixin ProximaLight {font-family: "proxima-nova",sans-serif; font-style: normal; font-weight: 300;}
+ @mixin ProximaReg {font-family: "proxima-nova",sans-serif; font-style: normal; font-weight: 400;}
+ @mixin ProximaSemi {font-family: "proxima-nova",sans-serif; font-style: normal; font-weight: 600;}
+
+
+
+// CSS MIXINS
+
+@mixin vertical-align {position: relative; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); }
+@mixin transition($properties) {
+  -moz-transition: #{$properties}; -webkit-transition: #{$properties}; -o-transition: #{$properties}; transition: #{$properties};
+}
+
+@mixin transform($properties) { -webkit-transform: $properties; -moz-transform: $properties; -ms-transform: $properties; -o-transform: $properties; transform: $properties; }
+
+@mixin respond-to($media) {
+  @if $media == laptop {
+    $total-columns: 24;
+    @media only screen and (max-width: 1250px) { @content; }
+  }
+  @if $media == tablet {
+    $total-columns: 24;
+    @media only screen and (min-width: 768px) and (max-width: 1023px) { @content; }
+  }
+  @if $media == mobile {
+    $total-columns: 16;
+    @media only screen and (max-width: 767px) { @content; }
+  }
+}
+
+// retina
+@mixin highdpi($ratio) { @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
+                  only screen and (min-resolution: $ratio*96 dpi) { @content; } }
+
+                  
+@mixin placeholder {
+  &::-moz-placeholder { @content }
+  &::-webkit-input-placeholder { @content }
+  &:-ms-input-placeholder { @content }
+}
+
+.mobile_only { display:none; @include respond-to(mobile) { display:block; } }

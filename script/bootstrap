@@ -1,0 +1,24 @@
+#!/bin/sh
+cd "$(dirname $0)"/..
+
+read -p "Would you like to restore a local database snapshot directly from staging? (y/n)" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  [[ -d tmp/psql ]] || mkdir -p tmp/psql
+  [[ -e tmp/psql/snapshot.dump ]] && rm tmp/psql/snapshot.dump
+
+    PGURL=$(cat .env | grep 'PGURL=' | cut -d'=' -f2)
+
+    if [[ $PGURL == '' ]]; then
+      echo "Something went wrong.  Cannot get PGURL."
+    else
+      echo "Creating database snapshot from $PGURL..."
+
+      pg_dump --schema=public -Fc $PGURL > tmp/psql/snapshot.dump
+
+      echo 'Restoring database snapshot...'
+
+      pg_restore -cOx -U $USER -d tracksmith_development tmp/psql/snapshot.dump
+fi
+else
+  echo ''
+fi

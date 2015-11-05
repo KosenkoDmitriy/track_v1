@@ -1,0 +1,50 @@
+.html_module {
+	height: 100%;
+
+	&.calls-to-action {
+		width: 98%;
+		height: 50px;
+		margin: 1em auto;
+		clear: both;
+		overflow: hidden;
+		position: relative;
+
+		.call-to-action {
+			position: absolute;
+			top: 0;
+			font-family: 'DidotLTStd-Roman', serif;
+			font-size: 2rem;
+			height: 100%;
+
+			span, a {
+				display: block;
+				float: left;
+			}
+
+			span {
+				line-height: 50px;
+			}
+
+			a {
+				margin-left: 8px;
+			}
+
+			&.buy {
+				left: 0;
+			}
+
+			&.social {
+				margin-bottom: 0;
+				right: 0;
+
+				span, a {
+					float: right;
+				}
+
+				.share-icon {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+}

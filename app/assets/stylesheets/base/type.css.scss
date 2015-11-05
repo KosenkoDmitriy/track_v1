@@ -1,0 +1,31 @@
+blockquote {color: $gold; @include Didot; text-transform: uppercase; font-size: 75px; margin: 35px 0; text-align: center;
+  &:before {content: "\201C";  display: inline-block;}
+  &:after {content: "\201D"; display: inline-block;}
+}
+
+.caption {@include ProximaSemi; font-size: 11px; color: $gold; letter-spacing: 1em; text-transform: uppercase; text-align: center;}
+
+h1,h2,h3,h4, h5 { @include Didot; margin: 0 0 25px; color: $gold; text-transform: uppercase; line-height: 1;}
+
+h1{font-size: emCal(160px);}
+h2 {font-size: emCal(100px);
+  @include respond-to(mobile) {font-size: emCal(35px);}
+}
+h3 {font-size: emCal(60px);
+	@include respond-to(mobile) {font-size: emCal(35px);}
+	@include respond-to(tablet) {font-size: emCal(45px);}
+}
+h4 {font-size: emCal(50px);}
+h5 {font-size: emCal(30px);}
+h6 {font-size: emCal(24px); font-weight: 100;}
+
+p {margin: 0 0 20px; @include AGConLight; font-size: emCal(30px); line-height: 1.35;}
+
+.sm {font-size: 12px; color: #666;}
+
+label {color: #888; font-size: 1em; text-transform: uppercase;}
+
+.item-price {@include ProximaReg; color: #888; }
+
+.product-title {@include ProximaSemi; color: #888; text-transform: uppercase; letter-spacing: 0.1em; padding-top: 10px; margin-bottom: 30px;}
+

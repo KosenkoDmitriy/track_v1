@@ -1,0 +1,17 @@
+<section class="page-content error-page">
+    <%= render_elements except: 'footer' %>
+
+    <div class="error-copy">
+        <div class="sorry">
+            <h1>Sorry we can't find the page you're looking for.</h1>
+        </div>
+        <div class="link-error">
+            <p>The link may be incorrect or out of date, or you may have bookmarked a page that has been moved.</p>
+        </div>
+        <div class="back">
+            <a href="<%= root_url %>"><div class="btn">back to homepage</div></a>
+        </div>
+    </div>
+</section>
+
+<%= render_elements only: 'footer'%>

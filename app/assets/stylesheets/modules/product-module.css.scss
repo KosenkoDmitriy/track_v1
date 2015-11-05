@@ -1,0 +1,150 @@
+
+// Spree Module
+.product-module {@extend .module; overflow: hidden; padding: 110px 60px; color: #555;
+  @include respond-to(mobile) {position: static; padding: emCal(60px) emCal(20px);}
+  .no-stock,  .backordered-message {display: none; @include AGConLight; clear: both; width: 100%; text-align: center; font-size: emCal(23px); width: 300px; margin: 0 auto;
+    @include respond-to(mobile) {width: 100%;}
+  }
+  .out-of-stock-message, .backordered-message {color: $red; }
+  .backordered-message {margin-top: 15px;}
+  .no-stock input {margin: 20px 0 10px;}
+  input.email-input {background-color: #ece8e2;}
+  .no-stock .btn {width: 100%;}
+
+  #notify-response {margin: 20px 0;}
+
+  .product-module-wrapper {display: table; width: 100%;
+    @include respond-to(mobile) {display: block;}
+  }
+
+  .product-image-wrapper {display: table-cell;  vertical-align: top; padding-right: 60px;
+    @include respond-to(mobile) {padding: 0; display: block; margin-bottom: 60px;}}
+   #main-image img {width: auto; height: auto; margin: 0 auto;}
+
+  .product-info-wrapper {display: table-cell; width: 40%; vertical-align: top; position: relative;
+    h3 {
+      @include respond-to(mobile) {font-size: emCal(45px);} }
+    @include respond-to(mobile) {padding: 0; display: block; width: 100%;}
+    .item-price {font-size: emCal(105px); line-height: 1; margin-bottom: 35px;
+      .symbol {font-size: emCal(40px); vertical-align: top;}
+    }
+    .name {color: $grey;}
+    .description {margin-bottom: 45px;}
+    &.vertical-align-middle {
+      vertical-align: middle;
+    }
+  }
+
+  // OPTION BUTTONS
+  label {clear: both; display: block; @include AGReg; font-size: emCal(12px); margin-bottom: 10px; letter-spacing: .05em; color: #555;}
+
+  .variant-option-values {clear: both; float: left; list-style: none; padding: 0; margin-bottom: 30px; overflow: hidden; position: relative; left: 50%; @include transform(translateX(-50%));
+    &:last-child {margin-bottom: 40px;
+      &.color {margin-bottom: 20px; padding: 0 50px 40px;
+        @include respond-to(mobile) {padding: 0 20px 40px;} }
+    }
+  }
+
+  // Each button
+  li {position: relative; float: left; height: 40px; min-width: 40px; border-top: 4px solid #ece8e2; border-bottom:4px solid #ece8e2; border-right:2px solid #ece8e2; border-left:2px solid #ece8e2; padding: 0 5px;
+    &:active { border-color: $gold; color: $offwhite; background-color: $gold; } }
+
+.no-touch .product-module li:hover { border-color: $gold; color: $offwhite; background-color: $gold; }
+.touch li:hover { background-color: red !important; }
+
+  li:first-child {border-left: 4px solid #ece8e2;
+    &:hover, &.active {border-color: $gold; color: $offwhite;}
+  }
+  li:last-child {border-right: 4px solid #ece8e2;
+    &:hover, &.active {border-color: $gold; color: $offwhite;}
+  }
+
+  // Each button if they are graphic
+  li.graphic:hover, li.graphic.active {border-color: $gold; color: $offwhite; background-color: $gold;
+      .brothers {background-position: -174px -2px}
+      .eliot {background-position: -123px -2px}
+      .foot {background-position: -25px -2px}
+      .tnse, .tracksmith {background-position: -72px -2px}
+      .woodshed, .cc {background-position: -198px -16px}
+  }
+
+
+
+  li.color {height: 46px; width: 46px; border-radius: 50%; border: 0px solid $gold; ; margin: 0 17px 48px; background-color: transparent; padding:0px;
+    .option-value {height: 46px; width: 46px; border-radius: 50%; top: 0; left: 0; background-color: #ddd;}
+    .color-name {position: absolute; top: 55px; left: 50%; @include transform(translateX(-50%)); @include AGReg; font-size: emCal(11px); letter-spacing: .05em; color: #555;  width: auto;  text-transform: uppercase; }
+
+    &:hover, &.active {border: 4px solid $gold; @include transition(border-width .2s linear);
+      .option-value {height: 36px; width: 36px; position: absolute; top: 50%; margin-top: -18px; left: 50%; margin-left: -18px;}
+      .color-name {display: block; margin-top: -4px;}
+    }
+  }
+
+  // span inside li with variant data (for product_module.js)
+  .option-value {display: block; height: 100%; width: 100%; cursor: pointer; font-size: 14px;}
+
+  // span inside li if graphic
+  .option-value.graphic {display: block; margin: auto;
+    background: image-url('/spree/graphic-sprite.png') no-repeat;
+    text-indent: -9999px; position: absolute; top: 0; bottom: 0; left: 0; right: 0;
+      &.brothers {width:22px; height:20px; background-position: -150px -2px;}
+      &.eliot {width:25px; height:21px; background-position: -96px -2px;}
+      &.tnse {width:22px; height:23px; background-position: -48px -2px;}
+      &.foot {width:21px; height:27px; background-position: -2px -2px;}
+      &.woodshed {width:29px; height:12px; background-position: -198px -2px;}
+  }
+
+  .qty-wrapper {overflow: hidden; width: 148px; margin: 0 auto 40px;}
+  .qty-btn  {float: left; height: 54px; width: 54px; border: 0; border: 4px solid #ece8e2; background: $offwhite; color: #888; font-size: 18px; font-weight: bold; line-height: 18px;;
+    &:focus {outline: none;}
+  }
+  .qty-field {float: left; width: 40px; text-align: center; background-color: $offwhite; color: #888; padding: 18px 0; font-weight: bold; font-size: 14px; line-height: 0.5em;
+    &:focus {outline: none; border: none;}
+  }
+
+
+  .add-to-cart {clear: both;}
+  #add-to-cart-button {width: 270px; height: 56px; color: #fff; font-size: 14px; letter-spacing: 3px; @include background-image(linear-gradient(#d2c6b6, #a28c6e)); border: 2px SOLID $gold;
+    &.added {
+      &:before {content: 'added!';}
+    }
+    &:disabled {background-color: #eee9e3; background-image:none; border: none;
+      &:hover {background-color: #eee9e3 !important;}
+    }
+    &:hover:enabled { @include background-image(linear-gradient(#796348, #a48c6b) !important); border: 2px SOLID #796348;}
+
+  }
+  // #quantity {display: none;}
+
+  .share-options {
+    width: 216px;
+    height: 25px;
+    margin: 1em auto;
+    position: relative;
+
+    .share-option {
+      margin: 0 4px;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 121px;
+      height: 25px;
+
+      &.twitter {
+        left: 0;
+        top: 1px;
+      }
+
+      &.facebook {
+        left: 85px;
+      }
+    }
+  }
+}
+
+.btn-primary:disabled,
+.btn-primary:disabled:hover {
+  background-color: transparent !important;
+  border: 3px solid #eee9e3 !important;
+}

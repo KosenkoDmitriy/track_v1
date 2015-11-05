@@ -1,0 +1,87 @@
+<header id="header" class="row" data-hook>
+  <%=render :partial => 'alchemy/shared/minicart' %>
+  <div class="nav standard-nav">
+    <ul class="nav-links">
+       <li><a href="/men">Men</a></li>
+       <li><a href="/women">Women</a></li>
+       <li>
+        <a href="/">
+          <figure id="logo" class="columns six" data-hook><%= image_tag 'logo/logo.png'%></figure>
+        </a>
+      </li>
+
+
+      <li id="cart-wrapper">
+      <span id="link-to-cart" data-hook>
+
+          <%= link_to Spree.t(:cart), '/cart' %>
+
+      </span>
+
+
+    </li>
+
+    <!-- from spree_auth_devise -->
+    <% if spree_current_user %>
+      <li class="account"><a href="/shop/account">Account</a>
+        <div class="arrow-up"></div>
+        <ul class="account-dropdown">
+          <li class="account-link"><a href="/shop/account#dashboard">Account Information</a></li>
+          <li class="account-link"><a href="/shop/account#addresses">Address Book</a></li>
+          <li class="account-link"><a href="/shop/account#orders">Order History</a></li>
+          <li class="account-link"><a href="/shop/account#credits">Credits</a></li>
+          <li class="account-link"><a href="/shop/account#returns">Returns &amp; Exchanges</a></li>
+          <li class=""><%= link_to Spree.t(:logout), spree.logout_path %></li>
+        </ul>
+      </li>
+
+
+    <% else %>
+      <li id="link-to-login"><%= link_to Spree.t(:login), spree.login_path %></li>
+    <% end %>
+
+    </ul>
+  </div>
+  <div class="nav mobile-nav">
+    <div class="mobile-links">
+    <ul class="">
+      <div class="close-nav"></div>
+      <li><a href="/men">Men</a></li>
+      <li><a href="/women">Women</a></li>
+
+      <% if spree_current_user %>
+
+      <li class="account-link"><a href="/shop/account#dashboard">Account Information</a></li>
+      <li class="account-link"><a href="/shop/account#addresses">Address Book</a></li>
+      <li class="account-link"><a href="/shop/account#orders">Order History</a></li>
+      <li class="account-link"><a href="/shop/account#credits">Credits</a></li>
+      <li class="account-link"><a href="/shop/account#returns">Returns &amp; Exchanges</a></li>
+      <li><%= link_to Spree.t(:logout), spree.logout_path %></li>
+
+      <% else %>
+        <li id="link-to-login"><%= link_to Spree.t(:login), spree.login_path %></li>
+      <% end %>
+
+    </ul>
+  </div>
+    <ul class="nav-links">
+      <li class="hamburger-nav">
+        <div class="icon-burger"></div>
+      </li>
+      <li class="logo">
+       <a href="/">
+          <figure id="logo" class="columns six" data-hook><%= image_tag "logo/logo.png"%></figure>
+        </a>
+      </li>
+          <li id="cart-wrapper">
+      <span id="mobile-link-to-cart" data-hook>
+          <%= link_to 'Cart', '/cart' %>
+      </span>
+
+
+    </li>
+
+    </ul>
+  </div>
+
+</header>

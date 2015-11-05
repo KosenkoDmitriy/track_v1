@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1">
+  <meta charset="UTF-8">
+	<title>Tracksmith | <%= @page["title"] %></title>
+  <%= render_meta_data %>
+  <%= csrf_meta_tags %>
+
+  <!-- OPEN GRAPH  -->
+  <meta property="og:title" content="<%= !@page.title.empty? ? @page.title : 'Running Deserves Better' %>"/>
+  <meta property="og:site_name" content="Tracksmith"/>
+  <meta property="og:description" content="<%= !@page.meta_description.empty? ? @page.meta_description : !@page.title.empty? ? @page.title : 'Running Deserves Better' %>"/>
+  <meta property="og:url" content="<%= request.original_url %>"/>
+
+  <!-- TWITTER -->
+  <meta property="twitter:card" content="gallery"/>
+  <meta property="twitter:site" content="@tracksmith"/>
+  <meta property="twitter:creator" content="@tracksmith"/>
+  <meta property="twitter:title" content="<%= !@page.meta_description.empty? ? @page.meta_description : !@page.title.empty? ? @page.title : 'Running Deserves Better' %>"/>
+  <meta property="twitter:description" content="<%= !@page.meta_description.empty? ? @page.meta_description : !@page.title.empty? ? @page.title : 'Running Deserves Better' %>"/>
+  <meta property="twitter:url" content="<%= request.original_url %>"/>
+
+  <%= stylesheet_link_tag 'application' %>
+
+  <!-- Load Typekit -->
+  <script src="//use.typekit.net/zkt4wzf.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+
+  <!-- End Load TypeKit -->
+
+  <!-- IMAGES FOR OPEN GRAPH AND TWITTER  -->
+  <% image_count = 0; %>
+  <% @page.elements.each do |el| %>
+      <% if el.name == 'background_image_module'; %>
+          <% el.essences.each do |essence| %>
+              <% if essence.try(:picture_url) %>
+                  <meta property="og:image" content="<%= essence.picture_url %>"/>
+                  <% if image_count < 4 %>
+                      <meta name="twitter:image<%= image_count %>" content="<%= essence.picture_url %>">
+                  <% end %>
+                  <% image_count = image_count + 1 %>
+              <% end %>
+          <% end %>
+      <% end %>
+  <% end %>
+  <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/workphoto/facebook_share.png"/>
+  <% if image_count <= 0 %>
+      <meta name="twitter:image:src" content="https://s3-us-west-2.amazonaws.com/workphoto/facebook_share.png">
+  <% elsif image_count < 4 %>
+      <meta name="twitter:image<%= image_count %>" content="https://s3-us-west-2.amazonaws.com/workphoto/facebook_share.png">
+  <% end %>
+
+  <%= favicon_link_tag 'favicon.ico' %>
+</head>
+
+<%= render :partial => 'alchemy/shared/header' %>
+<%= google_tag_manager %>
+<div id="fb-root"></div>
+
+<section class="page-content modules">
+  <%= render_elements except: 'footer' %>
+	<%= yield %>
+</section>
+
+<noscript><a href="https://www.olark.com/site/9750-171-10-8135/contact" title="Contact us" target="_blank">Questions?
+  Feedback?</a> powered by
+  <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a>
+</noscript>
+
+<%= javascript_include_tag 'application' %>
+
+<script>
+    ga('create', '<%= GOOGLE_ANALYTICS_CONFIG['api_key'] %>', 'auto');
+    ga('require', 'displayfeatures');
+    ga('require', 'ec');
+
+    olark.identify('9750-171-10-8135');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<%= form_tag '/referrals/subscribe', method: :post, id: 'referral_acceptance', class: 'referral_form', remote: true do %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+  <%= hidden_field_tag 'referral[referred]', "#{params[:email] ? params[:email] : ''}" %>
+  <%= hidden_field_tag 'referral[referring]', "#{params[:ref] ? params[:ref] : ''}"%>
+<% end %>

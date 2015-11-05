@@ -1,0 +1,8 @@
+<%= element_editor_for(element) do |el| -%>
+  <%= el.edit :background_color, :select_values => ['purple', 'white', 'navy', 'crimson', 'gold', 'forest', 'olive'] %>
+  <%= el.edit :text %>
+  <%= el.edit :stamp_image %>
+      <div class="hint" style="position: relative; top: -5px; color: green; margin-bottom: 10px;">&#8593; Google Analytics Identifer</div>
+  <%= el.edit :google_analytics_event_label %>
+  <%= el.edit :mailchimp_list_id %>
+<%- end -%>

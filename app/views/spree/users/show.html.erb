@@ -1,0 +1,82 @@
+<div id="account-page" class="account-page account-main">
+
+
+
+  <ul class="account-links">
+    <li><a class="account-link sub-link" href="#dashboard">Account Information</a></li>
+    <li><a class="account-link sub-link" href="#addresses">Address Book</a></li>
+    <li><a class="account-link sub-link" href="#orders">Order History</a></li>
+    <li><a class="account-link sub-link" href="#credits">Credits</a></li>
+    <li><a class="account-link sub-link" href="#returns">Returns &amp; Exchanges</a></li>
+  </ul>
+  <section class="account-info">
+    <div data-hook="account_dashboard" class="account-section active" id="dashboard">
+      <h3>Account Information</h3>
+      <div class="line"></div>
+      <div class="account-sub-section">
+        <h4>User Information</h4>
+        <dl id="user-info">
+          <dd><%= @user.email %></dd>
+          <dd><%= link_to Spree.t(:edit), spree.edit_account_path %></dd>
+        </dl>
+      </div>
+    </div>
+
+
+    <div data-hook="account_my_orders" class="account-section" id="orders">
+      <h3>Order History</h3>
+      <div class="line"></div>
+      <% if @orders.present? %>
+        <table class="order-summary">
+          <thead>
+          <tr>
+            <th class="order-date"><%= Spree.t(:date) %></th>
+            <th class="order-recipient">Recipient </th>
+            <th class="order-number"><%= I18n.t(:number, :scope => 'activerecord.attributes.spree/order') %></th>
+
+        <!-- <th class="order-status"><%#= Spree.t(:status) %></th> -->
+            <!--     <th class="order-payment-state"><%#= Spree.t(:payment_state) %></th>-->
+            <th class="order-shipment-state">Status </th>
+            <th class="order-total"><%= Spree.t(:total) %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @orders.each do |order| %>
+
+            <tr>
+              <td class="order-date"><%=  order.completed_at.to_date.strftime("%D")   %></td>
+              <td class="order-recipient"><%= order.ship_address.firstname %> <%= order.ship_address.lastname %></td>
+              <td class="order-number"><%= link_to order.number, order_url(order) %></td>
+            <!-- <td class="order-status"><%#= Spree.t("order_state.#{order.state}").titleize %></td> -->
+            <!-- <td class="order-payment-state"><%#= Spree.t("payment_states.#{order.payment_state}").titleize if order.payment_state %></td> -->
+            <td class="order-shipment-state"><%= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
+              <td class="order-total"><%= order.display_total %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <div class="no-results"><%= Spree.t(:you_have_no_orders_yet) %></div>
+      <% end %>
+      <br />
+
+    </div>
+
+    <div class="account-section" id="returns">
+      <h3>Returns &amp; Exchanges</h3>
+      <div class="line"></div>
+      <div class="returns-text">
+        To make a return, please select 'Return' below and fill out the following form. <br/>
+        <br />
+        To make an exchange, please select 'Exchange' below, and in the fields provided, specify the item you'd like to exchange and your desired replacement variant. <br/>
+      </div>
+      <%= render partial: 'returns' %>
+      <div id="response" class="return-submitted"></div>
+    </div>
+
+
+
+  </section>
+
+</div>
+

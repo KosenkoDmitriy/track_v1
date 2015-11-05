@@ -1,0 +1,13 @@
+<%- cache(element) do -%>
+
+    <%= element_view_for(element, :class => 'footer', :tag => :section) do |el| -%>
+
+        <% bgimage = el.essence(:background_image) %>
+        <% bgimageurl = bgimage ? bgimage.picture_url : nil %>
+        <% topbg = element.ingredient(:top_bar_background) %>
+        <% bgcolor = element.ingredient(:background_color) %>
+
+        <%= render :partial => "alchemy/shared/footer", locals: { bgcolor: bgcolor, bgimageurl: bgimageurl, topbg: topbg, galabel: el.render(:google_analytics_event_label) } %>
+
+    <% end %>
+<%- end -%>

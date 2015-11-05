@@ -1,0 +1,27 @@
+<%= element_view_for(element) do |el| -%>
+    <% color = el.ingredient(:text_color) %>
+    <% bgcolor = element.ingredient(:background_color) %>
+    <% headline = el.ingredient(:headline) %>
+    <% height = el.ingredient(:module_height) %>
+    <% pageLink = el.ingredient(:page_link) %>
+    <% title = el.ingredient(:image_title) %>
+
+    <% if @page.page_layout == 'index' && pageLink %>
+        <a href="<%= pageLink %>">
+    <% end %>
+
+    <% if el.ingredient(:overlay?) %>
+        <div class="overlay"></div>
+    <% end %>
+
+    <div title="<%= title %>" class="bg-color <% if bgcolor %><%= bgcolor %><% end %>" style="background: url(<%= image_for_platform(el).picture_url %>) no-repeat center center; background-size: cover; <%unless height.blank?%>height: <%=height%>px;<% end %>">
+
+      <% unless headline.blank? %>
+          <h2 class="hero-headline <%= color %>"><%= headline.strip_html_tags %></h2>
+      <% end %>
+    </div>
+
+    <% if @page.page_layout == 'index' && pageLink %>
+        </a>
+    <% end %>
+<%- end -%>

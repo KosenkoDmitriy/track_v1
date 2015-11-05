@@ -1,0 +1,18 @@
+<div class="<%= cssClass %>">
+  <a href="<%= url %>">
+    <% if isFeatured %><div class="hover-image" style= "background-image: url(<%= featuredImageUrl %>)"></div><% end %>
+    <span class="image">
+      <%= image_tag imageUrl %>
+    </span>
+    <span class="label">
+      <span class="name">
+        <%= name %>
+        <br>
+        <%= color %>
+      </span>
+      <span class="price">
+        <%= price %>
+      </span>
+    </span>
+  </a>
+</div>

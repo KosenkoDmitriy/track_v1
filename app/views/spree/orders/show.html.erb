@@ -1,0 +1,31 @@
+<fieldset id="order_summary" data-hook>
+  <div id="order" data-hook>
+    <% if order_just_completed?(@order) %>
+        <%= content_tag :section, id: 'checkout-step', :data => {products: product_trackable_properties, step: 4, order_state: @order.state, order_number: @order.number, order_revenue: @order.total, promotion_codes: promotion_codes} do -%>
+            <div class="success-wrapper">
+              <h4>Success!</h4>
+
+              <p>You have successfully placed your order. Your order number is <%= @order.number %></p>
+
+              <p>You will receive a confirmation email shortly. Thank you for shopping with us.</p>
+            </div>
+        <%- end %>
+    <% else %>
+        <h4>Order <%= @order.number %></h4>
+        <!-- <h6>Status: <%#= @order.shipment_state %></h6> -->
+        <div class="line"></div>
+    <% end %>
+    <%= render :partial => 'spree/shared/order_details', :locals => {:order => @order} %>
+
+    <br class="clear"/>
+
+    <p data-hook="links">
+      <%= link_to Spree.t(:back_to_store), '/', :class => "button" %>
+      <% unless order_just_completed?(@order) %>
+          <% if try_spree_current_user && respond_to?(:spree_account_path) %>
+              <%= link_to Spree.t(:my_account), spree_account_path, :class => "button" %>
+          <% end %>
+      <% end %>
+    </p>
+  </div>
+</fieldset>

@@ -1,0 +1,71 @@
+<% if variants.length > 0 %>
+	<% hasFeatured = false %>
+	<% maxVariantsForFeaturedRows = 4 %>
+	<a name="<%= heading.downcase %>"></a>
+	<h3 class="product-heading"><%= heading %></h3>
+    <section class="product-category" id="<%= heading.downcase %>">
+
+		<% variants.each_with_index do |var, index| %>
+			<% if index == 0 && var["isFeatured"] > 0 %>
+				<% hasFeatured = true %>
+				<% cssClass = "variant feature" %>
+				<% featuredImageUrl = var["featuredImage"] ? var["featuredImage"].attachment.url("original") : nil %>
+			<% else %>
+				<% cssClass = "variant" %>
+				<% featuredImageUrl = nil %>
+			<% end %>
+
+			<% if hasFeatured %>
+				<% if index <= maxVariantsForFeaturedRows %>
+					<% if index % 2 > 0 %>
+						<% rowTagStart = "<div class=\"row\">" %>
+						<% rowTagEnd = "" %>
+					<% else %>
+						<% rowTagStart = "" %>
+						<% rowTagEnd = "</div>" %>
+					<% end %>
+				<% else %>
+					<% if index % 4 == 1 %>
+						<% rowTagStart = "<div class=\"full-row\">" %>
+						<% rowTagEnd = "" %>
+					<% elsif index % 4 == 0 %>
+						<% rowTagStart = "" %>
+						<% rowTagEnd = "</div>" %>
+					<% else %>
+						<% rowTagStart = "" %>
+						<% rowTagEnd = "" %>
+					<% end %>
+				<% end %>
+			<% else %>
+				<% if index % 4 == 0 %>
+					<% rowTagStart = "<div class=\"full-row\">" %>
+					<% rowTagEnd = "" %>
+				<% elsif index % 4 == 3 %>
+					<% rowTagStart = "" %>
+					<% rowTagEnd = "</div>" %>
+				<% else %>
+					<% rowTagStart = "" %>
+					<% rowTagEnd = "" %>
+				<% end %>
+			<% end %>
+
+			<% if var == variants.last %>
+				<% rowTagEnd = "</div>" %>
+			<% end %>
+
+			<%= rowTagStart.html_safe %>
+			<%= render :partial => 'products/product', locals: {
+				isFeatured: var["isFeatured"] > 0,
+				cssClass: cssClass,
+				url: product_path(var["object"]),
+				imageUrl: var["image"] ? var["image"].attachment.url("product") : nil,
+				featuredImageUrl: featuredImageUrl,
+				name: var["name"],
+				color: var["color"],
+				price: number_to_currency(var["price"], precision: 0)
+			} %>
+			<%= rowTagEnd.html_safe %>
+		<% end %>
+
+    </section>
+<% end %>

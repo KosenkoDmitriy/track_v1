@@ -1,0 +1,1 @@
+tinymce.PluginManager.add("alchemy_link",function(e){e.addButton("alchemy_link",{icon:"link",tooltip:"Insert/edit link",shortcut:"Ctrl+K",stateSelector:"a[href]",onclick:function(){var n={node:e.selection.getNode(),bookmark:e.selection.getBookmark(),selection:e.selection,editor:e},o=new Alchemy.LinkDialog(n);e.focus(),o.open()}})});

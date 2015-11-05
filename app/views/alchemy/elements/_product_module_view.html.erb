@@ -1,0 +1,211 @@
+<div class="product-module">
+  <% product = element.ingredient(:spree_product) %>
+  <% show_facebook_share = element.ingredient(:show_facebook_share) %>
+  <% show_twitter_share = element.ingredient(:show_twitter_share) %>
+
+  <% if product %>
+      <div class="product-module-wrapper">
+        <div class="product-image-wrapper">
+          <div id="product-images" data-hook="product_images">
+            <div id="main-image" data-hook>
+              <% if product.images.any? %>
+                  <%= image_tag product.images[0].attachment.url(:large), :itemprop => "image"; %>
+              <% elsif product.variant_images.any? %>
+                  <%= image_tag product.variant_images[0].attachment.url(:large), :itemprop => "image" %>
+              <% else %>
+                  <%= image_tag 'spree/notfound.png' %>
+              <% end %>
+            </div>
+
+            <div id="thumbnails" data-hook style="display: none;">
+              <%# no need for thumbnails unless there is more than one image %>
+              <% if (product.images + product.variant_images).uniq.size > 1 %>
+                  <ul id="product-thumbnails" class="thumbnails inline" data-hook>
+                    <% product.images.each do |i| %>
+                        <li class='tmb-all <%= i.variant_html_classes %>' data-products="[<%= i.variant_html_attr %>]">
+                          <%= link_to(image_tag(i.attachment.url(:mini)), i.attachment.url(:large)) %>
+                        </li>
+                    <% end %>
+
+                    <% if product.has_variants? %>
+                        <% product.variant_images.each do |i| %>
+                            <% next if product.images.include?(i) %>
+                            <li class='vtmb <%= i.variant_html_classes %>' data-products="[<%= i.variant_html_attr %>]">
+                              <%= link_to(image_tag(i.attachment.url(:mini)), i.attachment.url(:large)) %>
+                            </li>
+                        <% end %>
+                    <% end %>
+                  </ul>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <%= content_tag :div, class: 'product-info-wrapper', data: {product_name: product.name, price:product.price} do -%>
+            <!-- removed currency symbol to hard code in $ for styling purposes -->
+            <div class="item-price gold didot">
+              <span class="symbol">$</span><%= Spree::Money.new(product.price, {:currency => "USD", symbol: false}).to_s %>
+            </div>
+            <h3 class="name didot"><%= product.name %></h3>
+
+            <p class="description"><%= product.description %></p>
+
+            <%= form_for :order, :url => '/shop/orders/populate', :remote => true do |f| %>
+                <div id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+
+                  <% if product.variants_and_option_values.any? %>
+                      <% if product.has_variants? %>
+
+
+                          <% variant_ids = [] %>
+                          <% instock_ids = [] %>
+                          <% nostock_ids = [] %>
+                          <% backorder_ids = [] %>
+
+                          <% product.variants.each do |v| %>
+
+                              <%# (variant_ids ||= []) << v.id  %>
+                              <% (variant_ids ||= []) << v.id if v.in_stock? || v.can_supply? %>
+                              <% (backorder_ids ||= []) << v.id if !v.in_stock? && (v.can_supply? || Spree::Stock::Quantifier.new(v).backorderable?) %>
+                              <% (nostock_ids ||= []) << v.id if (!v.in_stock? || Spree::Stock::Quantifier.new(v).total_on_hand <= 0) && !v.can_supply? %>
+                          <% end %>
+
+
+
+                          <% index = 0 %>
+
+                          <div id="product-variants" class="medium-6 columns">
+
+                            <% product.grouped_option_values.each do |type, values| %>
+                                <% optionType = type.name.parameterize %>
+
+                                <% if optionType != '1-size' %>
+                                    <div id="<%= dom_id(type) %>" class="variant-options index-<%= index %>">
+                                      <% if product.name == 'Grayboy' && type.presentation == 'Color' %>
+                                          <% presentation = 'GRAPHIC PRINT' %>
+                                      <% else %>
+                                          <% presentation = type.presentation.capitalize %>
+                                      <% end %>
+                                      <%= label_tag 'option-value-name', Spree.t(:select_a, :index => index + 1, :name => presentation) %>
+
+                                      <ul class="variant-option-values inline-list <%= type.name %>" data-group="<%= index %>">
+                                        <% values.sort_by(&:position).each do |value| %>
+                                            <% classes = ["option-value"] %>
+                                            <% optionValue = value.name.parameterize %>
+                                            <% unless (variants = product.variants_for_option_value(value)).empty? %>
+
+                                                <% classes << "" %>
+                                                <%
+                                                   classes = classes.join(" ")
+                                                   classes = classes
+                                                %>
+                                                <% variant_ids = [] %>
+
+
+                                                <% variants.each do |v| %>
+                                                    <% (variant_ids ||= []) << v.id %>
+                                                <% end %>
+
+
+                                                <% index == 0 ? (disabled = false) : (disabled = true) %>
+                                                <% if optionType == "graphic" %>
+                                                    <li class="no-touch <%= type.name %> option-btn">
+                                                      <span class="<%= classes %> <%= optionValue %> graphic" data-variant="<%= value.name %>" data-products="<%= variant_ids %>" data-group="<%= index %>"></span>
+                                                    </li>
+                                                <% elsif optionType == "color" %>
+                                                    <li class="<%= type.name %>">
+
+                                                      <span style="background-color: <%= value.name %>;" class="<%= classes %>" data-variant="<%= value.presentation %>" data-products="<%= variant_ids %>" data-group="<%= index %>"></span>
+                                                      <span class="color-name"><%= value.presentation %></span>
+                                                    </li>
+                                                <% else %>
+                                                    <li class="no-touch <%= type.name %> option-btn">
+                                                      <span class="<%= classes %> <%= optionValue %>" data-variant="<%= value.name %>" data-products="<%= variant_ids %>" data-group="<%= index %>"><%= value.presentation %></span>
+                                                    </li>
+                                                <% end %>
+
+                                            <% end %>
+                                        <% end %>
+                                      </ul>
+                                    </div>
+                                <% end %>
+                                <% index += 1 %>
+                            <% end %>
+                          </div>
+
+                          <% if product.variants.length > 1 %>
+
+                              <%= hidden_field_tag 'variant_id', "", :id => 'variant_id', :class => 'hidden', data: {nostock: nostock_ids, backorder: backorder_ids} %>
+
+                          <% else %>
+                              <!-- if there's only 1 variant, populate the add to cart hidden input with that variant's id -->
+                              <%= hidden_field_tag "variant_id", product.variants.first.id, :id => "variant_id", :class => "hidden", data: {nostock: nostock_ids, backorder: backorder_ids} %>
+                          <% end %>
+                      <% end %>
+
+                      <div class="add-to-cart">
+                        <div class="qty-wrapper">
+                          <input type='button' value='-' class='qty-btn qtyminus' field='quantity'/>
+                          <%= text_field_tag :quantity, 1, :class => 'title qty-field' %>
+                          <input type='button' value='+' class='qty-btn qtyplus' field='quantity'/>
+                        </div>
+                        <%#= hidden_field_tag :quantity, 1, :class => 'title', :min => 1 %>
+
+                        <%= button_tag :class => 'btn', :id => 'add-to-cart-button', :type => :submit, :disabled => true do %>
+                            <%= Spree.t(:add_to_cart) %>
+                        <% end %>
+                      </div>
+
+                  <% end %>
+                </div>
+            <% end %>
+            <!-- out of stock message -->
+            <div class="no-stock">
+              <div class="out-of-stock-message">This item is out of stock. Please enter your email address and we will
+                notify you when it is back.
+              </div>
+              <%= form_tag('/mailchimp/notify_me', method: "post", id: "notify-form", remote: true) do %>
+                  <%= email_field(:email, :address, {id: "email", placeholder: "Enter Your Email", class: "email-input"}) %>
+                  <%= hidden_field_tag "product", product.name %>
+                  <%= hidden_field_tag "variant", nil %>
+
+
+                  <%= submit_tag("Notify Me", id: "notify-submit", class: "btn-primary") %>
+              <% end %>
+              <div id="notify-response"></div>
+            </div>
+
+            <!-- backordered-message -->
+            <%= element_view_for(element) do |el| -%>
+                <% if el.essence(:backorder_info) %>
+                    <div class="backordered-message"><%= el.essence(:backorder_info).stripped_body %></div>
+                <% end %>
+            <% end %>
+
+            <div class="share-options">
+              <% if show_twitter_share %>
+                  <div class="share-option twitter">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="Tracksmith">Tweet</a>
+                    <script>!function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + '://platform.twitter.com/widgets.js';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, 'script', 'twitter-wjs');</script>
+                  </div>
+              <% end %>
+              <% if show_facebook_share %>
+                  <div class="share-option facebook">
+                    <div class="fb-like" data-href="<%= request.original_url %>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                  </div>
+              <% end %>
+            </div>
+
+        <%- end %>
+
+      </div>
+  <% end %>
+</div>

@@ -1,0 +1,297 @@
+fieldset {border: none; margin: 0; padding: 0;}
+dd, dl {margin: 0;}
+
+.account-page, .login-page {position: relative; top: 70px; color: #222; width: 960px; margin: 150px auto; overflow: hidden; @include AGConLight; font-size: emCal(25px); line-height: 1.2;
+	@include respond-to(mobile) {top: 90px; width: 100%; padding: 0 25px; margin: 50px auto 100px;}
+	@include respond-to(tablet) {width: 710px;}
+  .line {width: 60px; border-bottom: 3px solid #222; margin-bottom: 45px;
+		@include respond-to(mobile) {width: 40px; border-width: 2px; margin: 0 auto 45px; }
+  }
+  h3 {color: #222; font-size: emCal(40px); line-height: 1.2;
+		@include respond-to(mobile) {font-size: emCal(34px); text-align: center;}
+  }
+  h4 {color: #222; font-size: emCal(30px); line-height: 1.2; text-transform: capitalize;
+		@include respond-to(moble) {font-size: 23px;}
+  }
+
+  .no-results {  color: #888; font-size: emCal(25px);}
+
+}
+
+//login
+
+.login-page {
+  text-align: center;
+  &.error {
+    #new-customer, #existing-customer {
+      float: none;
+      margin: 0 auto;
+    }
+  }
+  h6 {
+    margin: 0 0 25px;
+    text-transform: uppercase;
+    font-size: emCal(23px);
+    color: #999;
+    line-height: 1;
+  }
+  .line {
+    margin: 0 auto 45px;
+  }
+  .btn-primary {
+    width: 100%;
+  }
+  form {
+    width: 380px;
+    margin: 0 auto;
+    @include respond-to(mobile) {
+      width: 100%;
+    }
+  }
+  label {
+    text-transform: none;
+  }
+
+  .divider {
+    float: left;
+    height: 400px;
+    margin: 20px 45px;
+    @include Garamond;
+    font-style: italic;
+    @include respond-to(tablet) {
+      float: none;
+      width: 100%;
+      height: auto;
+      margin: 80px 0;
+      overflow: hidden;
+    }
+    @include respond-to(mobile) {
+      float: none;
+      width: 100%;
+      height: auto;
+      margin: 80px 0;
+      overflow: hidden;
+    }
+    .vertical {
+      height: 200px;
+      border-left: 1px solid #222;
+      @include respond-to(tablet) {
+        height: 15px;
+        width: 40%;
+        float: left;
+        border: none;
+        border-bottom: 1px solid #222;
+      }
+      @include respond-to(mobile) {
+        height: 15px;
+        width: 40%;
+        float: left;
+        border: none;
+        border-bottom: 1px solid #222;
+      }
+    }
+    .or {
+      margin: 5px 0 5px -8px;
+      text-align: center;
+      font-size: emCal(30px);
+      @include respond-to(tablet) {
+        float: left;
+        width: 20%;
+        line-height: 1;
+        margin: 0;
+      }
+      @include respond-to(mobile) {
+        float: left;
+        width: 20%;
+        line-height: 1;
+        margin: 0;
+      }
+    }
+  }
+  .remember-height {
+    height: 67px;
+    text-align: left;
+  }
+}
+
+#new-customer, #existing-customer {
+  width: 425px;
+  float: left;
+  text-transform: none;
+  @include respond-to(tablet) {
+    width: 100%;
+    float: none;
+  }
+  @include respond-to(mobile) {
+    width: 100%;
+    float: none;
+  }
+}
+
+#forgot-password {
+	.reset, #spree_user_email {font-size: emCal(23px); margin-bottom: 15px;}
+}
+
+
+
+.account-links {width: 220px; margin-right: 40px; float: left; @include AGConLight; font-size: emCal(25px);
+	@include respond-to(tablet) {width: 180px; margin-right: 30px;}
+	@include respond-to(mobile) {display: none;}
+	li {margin-bottom: 20px;}
+	a.active {color: #888;}
+}
+.account-info {width: 700px; float: left;
+	@include respond-to(mobile) {float: none; width: 100%;}
+	@include respond-to(tablet) {width: 500px;}
+}
+
+.account-section {display: none;
+  &.active {display: block;}
+}
+.account-sub-section {margin-bottom: 40px;}
+
+
+.order-summary {
+	@include respond-to(mobile) {display: block;}
+	thead {@include AGReg; text-transform: uppercase; text-align: left; font-weight: bold; font-size: emCal(11px); letter-spacing:.35em;
+		@include respond-to(tablet) {letter-spacing: .2em;}
+		@include respond-to(mobile) {display: none;}
+		th {padding-bottom: 10px;}
+	}
+	tbody {font-size: emCal(20px); letter-spacing: 0.04em;
+		@include respond-to(mobile) {display: block;}
+	}
+	td {padding: 30px 50px 30px 0;
+		@include respond-to(tablet) {padding-right: 35px;}
+		@include respond-to(mobile) {display: block; width: 100%; margin-bottom: 15px; padding: 0;
+			&:before {display: block; text-transform: uppercase; font-weight: 400; font-size: emCal(16px);}
+			&:nth-of-type(1):before { content: "Date"; }
+			&:nth-of-type(2):before { content: "Recipient";}
+			&:nth-of-type(3):before { content: "Order Number";}
+			&:nth-of-type(4):before { content: "Status"; }
+			&:nth-of-type(5):before { content: "Total";}
+
+		}
+
+	}
+	tr {border-bottom: 1px solid #ddd;
+		@include respond-to(mobile) {display: block; padding-bottom: 30px; margin-bottom: 30px; }
+	}
+	th {padding-bottom: 30px; }
+}
+
+.edit-user, .edit-address, .new-address {
+	form {width: 360px;
+		@include respond-to(mobile) {width: 100%;}
+	}
+	input {font-size: emCal(20px);
+		&.btn-primary {font-size: emCal(10px);}
+	}
+}
+
+#user_addresses .even, #user_addresses .odd {margin-bottom: 40px; padding-bottom: 15px; border-bottom: 1px solid #ddd;
+	.address {margin-bottom: 20px;}
+}
+
+#returns {width: 560px; @include transition(all .2s ease);
+	@include respond-to(tablet) {width: 500px; @include transition(all .2s ease);}
+	@include respond-to(mobile) {width: 100%; }
+	.returns-text {margin-bottom: 40px; padding-bottom: 40px; border-bottom: 2px solid #ddd;}
+	.radio {margin-bottom: 20px;
+		span {display: inline-block; vertical-align: middle;}
+	}
+	.return_label {color: #222; text-transform: capitalize; vertical-align: middle;}
+	.divider {margin: 0 20px;}
+	.or {@include Garamond; font-style: italic; font-size: emCal(23px); margin: 0 5px;}
+	.horizontal {height: 5px; width: 20px; border-bottom: 1px solid #222;}
+	label.radio:before, input[type=radio] + label:before {top: 12px;}
+
+	select {font-size: emCal(23px); border-radius: 0; padding-top: 5px;}
+	.exchange-input {display: none;}
+}
+
+
+
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+input[type=checkbox] + label, input[type=radio] + label, label.radio {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 38px;
+}
+input[type=checkbox] + label span { display:block; padding-top:4px; }
+
+label.radio:before, input[type=radio] + label:before, .card-select:before {
+	background-image: (image-url('icons/bullet.png'));
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 16px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    top: 6px;
+
+}
+
+// using js to add .checked class to label that is a parent to the checked radio button.
+label.radio.checked:before, input[type=radio]:checked + label:before, .card-select.checked:before {
+		background-image: (image-url('icons/bullet.png'));
+		background-position: 15px 0;
+		height: 16px; width: 15px;
+    text-align: center;
+    line-height: 8px;
+}
+
+//checkmark styles
+
+input[type=checkbox] + label:before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: none;
+  margin-right: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  background-color: #ece8e2;
+  box-shadow: none;
+  top: 1px;
+}
+
+.checkbox label:before {
+  border-radius: 3px;
+}
+
+.opt_in_label {
+  font-size: 22px;
+  text-align: left;
+}
+
+input[type=checkbox]:checked + label:before {
+    content: image-url('icons/checkmark.png');
+    text-align: center;
+    line-height: 27px;
+}
+
+#ts-return-form input[type=text].error {
+	margin-bottom: 8px;
+}
+
+#ts-return-form select.error {
+	border: 2px solid #a10000;
+}
+
+#ts-return-form .required {
+	font-size: 20px;
+	color: #A9A9B7;
+	float: right;
+}

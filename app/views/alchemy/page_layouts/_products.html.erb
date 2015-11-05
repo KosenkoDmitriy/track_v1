@@ -1,0 +1,72 @@
+<section class="page-content modules">
+  <%= render_elements except: 'footer' %>
+
+  <section class="all-products">
+
+    <div class='mobile_only'>
+      <span class='mobile_header'>Products</span>
+      <hr>
+    </div>
+
+    <div class='products'>
+      <% variant_list = []
+         @page.children.each do |product_page|
+           prod = product_page.elements.named(:product_module).first.ingredient(:spree_product)
+
+           if !product_page.restricted? && product_page.public? && product_page.visible?
+             if prod
+               if prod.grouped_option_values.empty?
+                 variant_list.push({product: prod, variant: prod, optionvalue: nil})
+               else
+                 prod.grouped_option_values.select { |g| g[0].presentation.downcase != 'size' }.each do |option_desc|
+                   option = option_desc[0]
+                   values = option_desc[1]
+                   values.each_with_index do |value|
+                     variants = prod.variants.has_option(option, value)
+                     variant = variants.first
+                     variant_list.push({product: prod, variant: variant, optionvalue: value})
+                   end
+                 end
+               end
+             end
+           end
+         end
+      %>
+
+      <% variant_list.each_with_index do |entry, index|
+        variant = entry[:variant]
+        value = entry[:optionvalue]
+        product = entry[:product]
+      %>
+
+          <% if index % 3 == 0 %>
+              <div class='linewrap'>
+          <% end %>
+
+          <a href='<%= product_path(variant) %>'>
+            <%= content_tag :span, class: 'variant', data: {product_name: product.name, variant_name: value.presentation, price: variant.price, position: index + 1} do -%>
+                <span class='image'>
+                    <% if variant.images.first %>
+                        <%= image_tag variant.images.first.attachment.url(:product), :itemprop => 'image' %>
+                    <% else %>
+                        <%= image_tag 'spree/notfound.png' %>
+                    <% end %>
+                </span>
+                <span class='label'>
+                    <span class='name'><%= value.blank? ? "#{product.name}" : "#{product.name}, #{value.presentation}" %></span>
+                    <span class='price'><%= number_to_currency(variant.price, precision: 0) %></span>
+                </span>
+            <% end -%>
+          </a>
+
+          <% if index % 3 == 2 %>
+              </div>
+          <% end %>
+      <% end %>
+
+    </div>
+  </section>
+
+  <%= render_elements only: 'footer' %>
+
+</section>

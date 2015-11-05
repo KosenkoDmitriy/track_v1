@@ -1,0 +1,1 @@
+(function(){"undefined"==typeof window.Alchemy&&(window.Alchemy={}),Alchemy.showMenubar=function(){var e;return e=document.getElementById("alchemy_menubar"),"undefined"!=typeof e&&null!==e?e.style.display="block":void 0},Alchemy.showMenubar()}).call(this);

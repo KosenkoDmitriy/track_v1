@@ -1,0 +1,22 @@
+
+<section class="login-page error">
+
+  <% @body_id = 'login' %>
+  <div id="existing-customer">
+    <h6>Existing Customers</h6>
+    <h3><%= Spree.t(:login_as_existing) %></h3>
+    <div class="line"></div>
+    <div data-hook="login">
+    <% if flash[:error] %>
+      <div class="flash errors"><%= flash[:error] %></div>
+    <% end %>
+
+      <%= render :partial => 'spree/shared/login' %>
+      <%#= Spree.t(:or) %>
+      <%#= link_to Spree.t(:create_a_new_account), spree.signup_path %> 
+      <%= link_to Spree.t(:forgot_password), spree.recover_password_path %>
+    </div>
+  </div>
+
+
+</section>

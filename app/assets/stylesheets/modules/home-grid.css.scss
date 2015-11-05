@@ -1,0 +1,153 @@
+// Header on homepage
+body.is-homepage {
+  #header {
+    position: relative;
+
+    @include respond-to(mobile) { position: fixed; }
+  }
+  &.isHeaderFixed {
+    #header {
+      position: fixed;
+    }
+  }
+}
+
+// Full height panels
+section#homepage-intro,
+section#lookbook {
+  height: 100%;
+}
+
+section#homepage-intro {
+  @include respond-to(mobile) { display:none; }
+}
+
+section#lookbook {
+  @include respond-to(mobile) { height:500px; }
+}
+
+.homepage {
+  // .stripe {background: image-url('bg-stripe-purple.png') no-repeat top left; width: 100%; height: 2000px; position: absolute; z-index: 10;}
+  &.page-content{
+    height: 100%;
+
+    //@include respond-to(mobile) { top:0; }
+  }
+  .module-content .module-text,
+  .content-module{
+    p {
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .module-content.bottom-left {
+    .module-text {
+      p {
+        margin: 0;
+        max-width: none;
+      }
+    }
+  }
+
+  .brand-intro {
+    background: #FFFBEC;
+  }
+}
+
+.home_hero {height: 100%; text-align: center;
+  .bg-color {min-height: 600px;
+    @include respond-to(mobile) {}
+  }
+  .logo {margin: 0 auto; width: auto; padding-top: 20px;}
+  h2 {z-index: 11; line-height: 1; width: 80%; text-transform: none;
+    @include respond-to(mobile) {width: 100%;}
+  }
+}
+
+.home_image_module, .home_text_module, .email_capture {text-align: center;
+  .bg-color {padding: 120px 0 170px;}
+  img, .superheader, .big-text {position: relative; z-index: 11; }
+  .home-text, .superheader {
+    &.white {color: #fff;}
+    &.black {color: #000;}
+    &.gold {color: $gold;}
+  }
+  .big-text p {font-size: emCal(60px); margin: 0 0 25px; line-height: 1; width: 80%; margin: 0 auto 15px; text-transform: none;}
+  .stamp-image {margin: 40px auto 0; width: 80px;
+    img {width: 100%; height: auto;}
+  }
+}
+
+.home_image_module {
+  a {display: block;}
+  .big-image {height: 800px; width: auto; margin: 0 auto;
+    @include respond-to(mobile) {height: 300px;}
+  }
+  .medium-image {height: 600px; width: auto; margin: 0 auto;
+    @include respond-to(mobile) {height: 300px;}
+  }
+  .superheader {margin-bottom: 20px;}
+}
+
+.home_text_module {
+  .bg-color {padding: 190px 0 125px;}
+  .stamp-image {margin-top: 50px;}
+}
+
+.email_capture {
+  // form styles in layout.css.scss
+  .bg-color {padding: 190px 0 125px;}
+  .stamp-image {margin-top: 50px;}
+}
+
+.email_capture_expanded {
+  .email-form {margin: 40px auto; padding: 0;}
+  .social {margin: 40px 0;
+    a {vertical-align: middle;}
+  }
+}
+
+
+
+.row {overflow: hidden; width: 100%;}
+
+.event-row {@extend .row;
+  &.image-right {
+    .event-image {float: right;}
+    .event-info {float: left;}
+  }
+  &.image-left {
+    .event-image {float: left;}
+    .event-info {float: right;}
+
+  }
+  .event-image {position: relative;}
+  .event-info {padding: 60px 55px; @include ProximaLight;}
+  .event-when span, .event-where span {@include ProximaSemi;}
+}
+
+
+.grid-row {@extend .row; border-top: 1px solid $border; border-bottom: 1px solid $border; clear: both; display: table; table-layout: fixed; min-height: 500px;}
+.grid-1 .block-wrapper {/*height: 1000px;*/ display: table;}
+.grid-2 .block-wrapper {/*height: 500px;*/ display: table;}
+.grid-3 .block-wrapper {/*height: 480px;*/ display: table;}
+.grid-4 .block-wrapper {/*height: 350px;*/ display: table;}
+.grid-5 .block-wrapper {/*height: 350px;*/ display: table;}
+
+
+.block {width: 100%; border-right: 1px solid $border; display: table-cell; vertical-align: middle;
+  &:last-child {border: none;}
+  img {display: block; max-height: 100%;}
+}
+.product-block {@extend .block;
+  .block-wrapper {padding: 30px;}
+  img {margin: 0 auto;}
+}
+.image-block {@extend .block;
+  img {margin: 0 auto; visibility: hidden;}
+}
+.copy-block {@extend .block;
+  .block-wrapper {padding: 30px;}
+}

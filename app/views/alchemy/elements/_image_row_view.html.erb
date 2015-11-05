@@ -1,0 +1,19 @@
+<%- cache(element) do -%>
+  <%= element_view_for(element) do |el| -%>
+  <% pageLink = el.ingredient(:page_link)%>
+
+  <% if @page.page_layout == 'index' && pageLink  %>
+  <a href="<%= pageLink %>">
+  <%end%>
+    <div class="table-row">
+    <%- element.contents.where(name: ['image']).each do |content| -%>
+        <div class="image-row-block">
+          <%= render_essence_view(content) %>
+        </div>
+    <%- end -%>
+    </div>
+  <% if @page.page_layout == 'index' && pageLink  %>
+  </a>
+  <%end%>
+  <%- end -%>
+<%- end -%>

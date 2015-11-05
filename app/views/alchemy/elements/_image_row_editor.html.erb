@@ -1,0 +1,9 @@
+<%= element_editor_for(element) do |el| -%>
+  <% if @page.page_layout == 'index' %>
+  <%= el.edit :page_link %>
+  <%end%>
+  <% element.contents.where(name: ['image']).each do |content| %>
+    <%= render_essence_editor content %>
+  <% end %>
+  <p><%= render_new_content_link(element) %></p>
+<%- end -%>

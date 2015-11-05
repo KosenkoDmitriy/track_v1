@@ -1,0 +1,38 @@
+
+<%- cache(element) do -%>
+<% background = element.ingredient('background_color') %>
+  <%= element_view_for(element, :class => background + " bg-color background_color_module") do |el| -%>
+
+  <% height = element.ingredient(:module_height)%>
+  <% stamp = el.ingredient(:stamp_image)%>
+  <% pageLink = el.ingredient(:page_link)%>
+
+  <% if @page.page_layout == 'index' && pageLink  %>
+  <a href="<%= pageLink %>">
+  <%end%>
+
+   <div class="height-wrapper" <%if !height.blank?%> style= "height: <%=height%>px" <%end %>>
+    <div class="module-content <%= el.render :text_alignment %> <%= el.render :text_color %>">
+        <div class="superheader"><%= el.render :superheader %></div>
+        <div class="module-headline"><%= el.render :headline %></div>
+        <div class="module-text "><%= el.render :text %></div>
+        <div class="bullet-list">
+         <%- element.contents.where(name: ['bullet']).each do |content| -%>
+          <% text = content.essence.stripped_body%>
+          <div class="bullet"> <%=text%> </div>
+        <%- end -%>
+       </div>
+       <% if stamp %>
+        <div class="stamp-image">
+          <%= image_tag show_alchemy_picture_path(stamp,  :format => (stamp.try(:suffix).to_s == 'png' ? 'png' : 'jpg')) %>
+        </div>
+     <% end %>
+    </div>
+  </div>
+
+  <% if @page.page_layout == 'index' && pageLink  %>
+    </a>
+  <%end%>
+
+  <%- end -%>
+<%- end -%>

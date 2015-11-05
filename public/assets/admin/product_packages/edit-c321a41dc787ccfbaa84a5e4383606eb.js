@@ -1,0 +1,1 @@
+(function(){$("#cancel_link").click(function(c){return c.preventDefault(),$("#product_packages").html("")})}).call(this);

@@ -1,0 +1,33 @@
+<section class="essay-intro">
+  <%- cache(element) do -%>
+    <%= element_view_for(element) do |el| -%>
+    <div class="essay-header">
+        <h5 class="essay-superheader">
+          <%= el.render :essay_superheader %>
+        </h5>
+        <h1 class="article_title">
+          <%= el.render :article_title %>
+        </h1>
+        <div class="intro_blurb">
+    </div>
+
+      </div>
+      <div class="essay-blurb">
+        <%= el.render :intro_blurb%>
+
+      </div>
+      <div class="credits">
+        <%- credit = element.contents.where(name: ['credit_title', 'credit_author']).each_slice(2).to_a -%>
+        <% credit.each_with_index do |item, index| %>
+          <%- title = item[0] -%>
+          <%- author = item[1] -%>
+          <div class="credit-line">
+            <span class="title"><%= render_essence_view(title) %></span><span class="colon">:</span><span class="author"><%= render_essence_view(author) %></span>
+          </div>
+        <%- end -%>
+      </div>
+    <%- end -%>
+  <%- end -%>
+
+  <div class="icon"><%= image_tag 'logo/hare.png' %></div>
+</section>

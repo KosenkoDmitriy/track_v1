@@ -1,0 +1,22 @@
+<p>
+  <%= f.email_field :email, :class => 'title', :placeholder => Spree.t(:email)%>
+</p>
+<div id="password-credentials">
+  <p>
+    <%= f.password_field :password, :class => 'title', :placeholder => Spree.t(:password) %>
+  </p>
+
+  <p>
+    <%= f.password_field :password_confirmation, :class => 'title', :placeholder =>  Spree.t(:confirm_password)%>
+  </p>
+</div>
+<p>
+<%= f.hidden_field :source, :value => source %>
+</p>
+
+<p class='field checkbox'  data-hook='email_opt_in'>
+  <%= check_box_tag 'sign_up[email_opt_in]', '1', true %>
+  <%= label_tag :sign_up_email_opt_in, 'Be the first to know about new product introductions and exclusive content.', :class => 'opt_in_label' %>
+</p>
+
+<div data-hook="signup_below_password_fields"></div>

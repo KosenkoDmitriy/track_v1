@@ -1,0 +1,47 @@
+<li class="<%= cycle('one', 'two', 'three', 'four') %>">
+  <div class='minicart-actions' data-hook="minicart_item_actions">
+    <div class='minicart-delete' data-hook="minicart_item_delete">
+      <%= link_to '&#10005;'.html_safe, '#', :class => 'delete', :id => "delete_#{dom_id(line_item)}" %>
+    </div>
+  </div>
+
+  <%= content_tag :div, class: 'minicart-content', data: {product_name: variant.product.name, variant_name: variant.options_text, price: variant.price, quantity: line_item.quantity, position: line_item.order.line_items.index(line_item)} do -%>
+      <div data-hook="minicart_item_image" class="item-image-wrapper">
+        <% if variant.images.length == 0 %>
+            <%= link_to image_tag(variant.product.images[0].attachment.url(:small)), product_path(variant.product) %>
+        <% else %>
+            <%= link_to image_tag(variant.images.first.attachment.url(:small)), product_path(variant.product) %>
+        <% end %>
+      </div>
+      <div class='minicart-item-description' data-hook="minicart_item_description">
+        <div class="item-name" data-hook="minicart_item_name">
+          <div class="product-name"><%= link_to variant.product.name, product_path(variant.product) %></div>
+        </div>
+        <div class="item-total" data-hook="minicart_item_total">
+          <%= Spree::Money.new((line_item.price * line_item.quantity), {:currency => "USD"}).to_s unless line_item.quantity.nil? %>
+        </div>
+        <div class="variant-qty">
+          <span class="line-item-quantity notification"><span><%= "#{line_item.quantity}" %></span></span>
+          <span class="item-variant"><%= variant.options_value %></span>
+
+          <div class="change-qty">Change Qty</div>
+        </div>
+
+      </div>
+  <%- end %>
+
+  <div data-hook="minicart_item_quantity" class="qty-wrapper">
+    <div class="qty-field-wrapper">
+      <span class="close"></span>
+      Quantity
+      <div class="qty-field"></div>
+      <%#= text_field_tag :quantity, "", :class => 'title '%>
+    </div>
+    <input type='button' value='&minus;' class='qty-btn qty-change qtyminus' field='quantity'/>
+    <input type='submit' value='OK' class="qty-btn qtysubmit" id="qty-submit"/>
+    <input type='button' value='+' class='qty-btn qty-change qtyplus' field='quantity'/>
+    <%= item_form.hidden_field :quantity, :min => 0, :class => "line_item_quantity" %>
+  </div>
+
+
+</li>

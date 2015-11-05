@@ -1,0 +1,50 @@
+<%- cache(element) do -%>
+
+  <% grid = element.contents.length %>
+
+  <div class="grid-row clearfix grid-<%=grid%>"%>
+
+    <% if grid > 0 %>
+
+    <%- element.contents.each_with_index do |content, index| -%>
+
+    <% if content.name == 'product'%>
+      <div class="product-block block-<%= index + 1 %>">
+       
+        <% product = content.ingredient %>
+        <a href="/<%= product.slug%>" class="block-wrapper">
+        <div class="product-title"><%=product.name %></div>
+          <div class="image-wrapper">
+          <%if product.images.any?  %>
+            <%= image_tag product.images[0].attachment.url(:large), :itemprop => "image"%>
+          <%elsif product.variant_images.any? %>
+            <%= image_tag product.variant_images[0].attachment.url(:large), :itemprop => "image"%>
+          <%else %>
+            <p>"placeholder image"</p> 
+          <% end %>
+        </div>
+        </a>
+      </div>
+      <% elsif content.name == 'copy'%>
+        <div class="copy-block block-<%= index + 1 %>">
+          <div class="block-wrapper">
+          <%= render_essence_view(content) %>
+        </div>
+      </div>
+      <% elsif content.name == 'image'%>
+        <div class="image-block block-<%= index + 1 %>" style="background: url(<%=content.essence.picture_url %>) no-repeat center center; background-size: cover;">
+          <!--         <div class="block-wrapper" style="background-image: url(<%=content.essence.picture_url %>); background-size: cover;">
+          <%= render_essence_picture_view(content, {}, {}) %>
+        </div> -->
+      </div>
+      <% end %>
+
+    <!-- end contents loop -->
+    <%- end -%>
+
+    <!-- end if grid > 0 -->
+    <%- end -%>
+  </div>
+
+  <!-- end cache element -->
+<%- end -%> 

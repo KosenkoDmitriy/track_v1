@@ -1,0 +1,45 @@
+<%- cache(element) do -%>
+  <%= element_view_for(element) do |el| -%>
+    <% stamp = el.ingredient(:stamp_image) %>
+    <% height = el.ingredient(:module_height)%>
+    <% mailchimp_list_id = el.ingredient(:mailchimp_list_id)%>
+
+    <div class="bg-color <%=el.render :background_color %>" <%if !height.blank?%> style= "height: <%=height%>px" <%end %>>
+      <div class="module-content <%= el.render :text_alignment %> <%= el.render :text_color %>">
+
+        <div class="module-headline"><%= el.render :headline %></div>
+        <div class="module-text "><%= el.render :text_above %></div>
+
+        <%= form_tag('/mailchimp/subscribe', method: "post", id: "soldout-capture", remote: true, class: "email-form") do %>
+          <% if mailchimp_list_id.present? %>
+            <%= hidden_field_tag('u', 'f775b6e02c5dce810e40a4652') %>
+            <%= hidden_field_tag('id', mailchimp_list_id) %>
+          <% end %>
+          <%= email_field(:email, :address, {id: "email", placeholder: "Enter Your Email", class: "email-input"}) %>
+          <%= submit_tag("Sign Up", class: "btn-primary", :onClick => "ga('send', 'event', { eventCategory: 'email', eventAction: 'capture', eventLabel: '" + el.render(:google_analytics_event_label) + "', eventValue: 1});") %>
+        <%end%>
+    
+    <div class="email-response" id="soldout-response"></div>
+
+    <div class="module-text "><%= el.render :text_below %></div>
+
+    <div class="social">
+      <div class="social-row">
+          <a class="share-icon footer-twitter" href="http://twitter.com/tracksmith" target="_blank"></a>
+          <a class="share-icon footer-fb" href="http://www.facebook.com/tracksmithrunning" target="_blank"></a>
+          <a class="share-icon footer-instagram" href="http://www.instagram.com/tracksmithrunning" target="_blank"></a>
+          <a class="share-icon footer-tumblr" href="http://tracksmithrunning.tumblr.com" target="_blank"></a>
+
+      </div>
+    </div>
+
+
+     <% if stamp %>
+      <div class="stamp-image">
+        <%= image_tag show_alchemy_picture_path(stamp,  :format => (stamp.try(:suffix).to_s == 'png' ? 'png' : 'jpg')) %>
+      </div>
+   <% end %>
+    </div>
+    </div>
+  <%- end -%>
+<%- end -%>

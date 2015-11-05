@@ -1,0 +1,74 @@
+// Minicart
+
+body.cart-open {overflow: hidden;}
+
+#minicart {display: none; @include ProximaLight; background: #fff; overflow: scroll; position: relative; background-color: $navy;
+
+  #errorExplanation {width: 100%; background-color: rgba(0, 0, 0, .5); padding: 40px 20%;}
+}
+
+.close-cart {position: absolute; top: 0px; left: 0px; background-color: rgba(15, 23, 38, .95); z-index: 999; height: 50px; width: 80px; line-height: 50px; text-align: center; cursor: pointer;}
+.minicart-wrapper, #update-minicart {overflow: hidden; min-height: 300px; }
+#update-minicart {@include respond-to(mobile) {padding-top: 30px; padding-bottom: 125px; position: relative; overflow: scroll;}}
+.minicart-content {position: relative; top: 0; @include transition(top .3s ease);
+  &.open {top: -190px; @include transition(top .3s ease);}
+}
+.minicart-actions {text-align: right;}
+
+#minicart-details {float: right; width: 320px; background-color: #141b2a; /*fix for height auto: */ padding: 50px 50px 100%; margin-bottom: -100%;
+  @include respond-to(mobile) {float: none; width: 100%; padding: 20px; margin: 0; position: absolute; height: 120px; z-index: 10;}
+  .subtotal, .empty {margin-bottom: 30px;
+    @include respond-to(mobile) {margin-bottom: 15px;}
+  }
+  .empty {color: $offwhite; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+  .checkout, .continue {display: block;}
+}
+
+#minicart-items {width: 100%; display: table;
+  li {position: relative; float: left; overflow: hidden; list-style: none; text-align: left; margin:0; width: 25%; max-width: 324px; border-right: 1px solid #22262e; border-bottom: 1px solid #22262e; padding: 40px 25px 25px; @include transition(width .2s ease);
+    @include respond-to(laptop) {width: 33.333%}
+    @include respond-to(tablet) {width: 50%;}
+    @include respond-to(mobile) {display: block; width: 100%; float: none; margin: 0 auto; border-left: 1px solid #22262e;}
+  }
+  .minicart-delete {position: absolute; top: 15px; right: 15px;
+    a {color: #747880;}
+  }
+  .item-image-wrapper {height: 160px; margin-bottom: 50px;
+    @include respond-to(laptop) {height: 150px; margin-bottom: 40px;}
+    a {display: block;}
+    img {display: block; margin: 0px auto;}
+  }
+  .notification{font-size: emCal(14px); padding: 1px 0; margin-right: 10px; cursor: pointer;}
+
+  .item-name {float: left; width: 75%; color: #747880; font-size: emCal(14px); line-height: 1;
+    .product-name a {width: 90%; margin-bottom: 10px; color: $offwhite; font-size: emCal(18px);   display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      @include respond-to(laptop) {font-size: emCal(16px);}
+    }
+  }
+  .item-total {color: #747880; font-size: emCal(14px); float: left; width: 25%;}
+  .item-variant {font-size: emCal(14px);}
+  .variant-qty {clear: both; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;
+    .change-qty {color: $turquoise; font-size: emCal(13px); padding-top: 10px; padding-left: 40px; cursor: pointer; position: relative; top: -20px; height: 20px; opacity: 0; @include transition(all .2s ease);}
+    &:hover {
+      .change-qty{padding-top: 20px; opacity: 1; @include transition(all .2s ease);}
+    }
+  }
+
+  .qty-wrapper {display: block; height: 0; overflow: hidden; width: 100%; margin: 20px auto 0; @include transition(height .3s ease); position: absolute; bottom: 0; left: 0;
+    &.open {height: 190px; @include transition(height .3s ease);}
+  }
+  .qty-btn  {float: left; height: 45px; line-height: 45px; width: 25%; border: 0; color: #fff; background-color: #29aae2; font-size: emCal(20px);
+    &.qtysubmit {width: 50%; @include AGReg(); font-size: emCal(12px); font-weight: bold;}
+    &.qtyminus {border-right: 2px solid $navy;}
+    &.qtyplus {border-left: 2px solid $navy;}
+    &:focus, &:active {outline: none;}
+  }
+  .qty-field-wrapper {text-align: center; text-transform: uppercase; color: #fff; @include AGReg(); font-size: emCal(12px); font-weight: bold; height: 145px; background-color: rgba(255, 255, 255, .1); padding-top: 15px; position: relative;
+    .close {display: inline-block; position: absolute; background-image: image-url("icons/xout.png"); background-position: 0 0; height: 11px; width: 11px; top: 15px; right: 15px; cursor: pointer;}
+  }
+  .qty-field {@include AGConLight(); width: 100%; height: auto; color: $gold; font-size: emCal(90px); background-color: transparent; margin-bottom: 0; text-align: center; padding: 0; position: absolute; bottom: 0;
+    &:focus {outline: none; border: none;}
+  }
+  
+}
+

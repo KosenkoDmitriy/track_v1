@@ -1,0 +1,56 @@
+<% current_order and current_order.update! # update to get correct total %>
+ 
+var winW = $(window).width(),
+		isMobile = (winW < 768) ? true : false,
+		$addToCartBtn = $("#add-to-cart-button");
+
+if (!isMobile) {
+	// Refresh minicart count
+	$("#link-to-cart a").replaceWith('<%= escape_javascript link_to_cart %>')
+}
+else {
+	// Refresh minicart count for mobile
+	$("#mobile-link-to-cart a").replaceWith('<%= escape_javascript link_to_cart %>')
+}
+
+$addToCartBtn.addClass('added');
+function removeAdd(){
+    $addToCartBtn.text("")
+};
+removeAdd();
+
+
+setTimeout(function () {
+  $addToCartBtn.removeClass('added').blur().text("Add To Cart");
+},
+2000);
+
+
+// Refresh minicart line items
+$("#minicart").replaceWith('<%= escape_javascript render("alchemy/shared/minicart") %>')
+
+if(isMobile) {minicart(true);}
+else {
+	// reset cart height
+  var cartHeight = function(){
+    var winH = $(window).innerHeight();
+    if (!isMobile) {
+      $('#minicart').css('max-height', (winH*.5));
+      $('#update-minicart').css('height', '');
+    }
+    else {
+      $('#minicart').css('max-height', '');
+      $('#minicart-details').css('top', winH-120);
+      $('#update-minicart').css('height', winH);
+    }
+  }();
+}
+
+// Sliding down minicart
+$("#minicart").slideDown();
+
+// Sliding up minicart
+setTimeout(function () {
+  $("#minicart").slideUp()
+},
+2000);

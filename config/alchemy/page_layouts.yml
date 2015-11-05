@@ -1,0 +1,34 @@
+# == This file defines the page layouts for new pages.
+#
+# For further informations please see http://guides.alchemy-cms.com/create_page_layouts.html
+
+
+- name: index
+  unique: true
+  autogenerate: [hero_module, home_image_module, footer]
+  elements: [hero_module, home_image_module, home_text_module, email_capture, email_capture_expanded, email_capture_modal, product_module, jumbo_product_module, background_image_module, background_color_module, image_row, essay_intro_module, essay_body_module, quote_module, footer]
+
+- name: guide
+  elements: [headline]
+
+- name: modules
+  autogenerate: [hero_module, product_module, footer]
+  elements: [hero_module, product_module, jumbo_product_module, background_image_module, background_color_module, image_row, essay_intro_module, essay_body_module, quote_module, footer, email_capture, email_capture_expanded]
+
+- name: products
+  unique: true
+  autogenerate: [hero_module, footer]
+  elements: [hero_module, footer, email_capture_modal, html_module]
+
+- name: product_detail
+  cache: false
+  autogenerate: [hero_module, product_module, footer]
+  elements: [hero_module, product_module, jumbo_product_module, background_image_module, background_color_module, image_row, essay_intro_module, essay_body_module, quote_module, email_capture_modal, footer, html_module, email_capture, email_capture_expanded]
+
+- name: footer_page
+  autogenerate: [page_title, footer_page_block, footnote, footer]
+  elements: [page_title, footer_page_block, footnote, footer]
+
+- name: error_page
+  autogenerate: [footer]
+  elements: [footer]

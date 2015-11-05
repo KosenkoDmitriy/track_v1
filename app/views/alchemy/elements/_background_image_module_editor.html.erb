@@ -1,0 +1,25 @@
+<%= element_editor_for(element) do |el| -%>
+  <% if @page.page_layout == 'index' %>
+  <%= el.edit :page_link %>
+  <%end%>
+  <%= el.edit :background_image %>
+  <%= el.edit :mobile_image %>
+  <%= el.edit :overlay? %>
+  <%= el.edit :superheader %>
+  <%= el.edit :headline %>
+  <%= el.edit :text %>
+  <%= el.edit :text_color, :select_values => ['black', 'white', 'gold'] %>
+  <%= el.edit :text_alignment, :select_values => ['top-left', 'top-center', 'top-right', 'center-left', 'center-center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right'] %>
+  <%= el.edit :module_height %>
+    <div class="hint" style="position: relative; top: -5px; color: green; margin-bottom: 10px;">&#8593; Please enter numeric value or leave blank for default</div>
+  <% element.contents.where(name: ['bullet', 'stamp_image']).each do |content| %>
+    <%= render_essence_editor content %>
+  <% end %>
+  <p><%= render_new_content_link(element) %></p>
+
+  <section>
+    <hr>
+    <h1> SEO </h1>
+    <%= el.edit :image_title %> 
+  </section>
+<%- end -%>

@@ -1,0 +1,6 @@
+<%- cache(element) do -%>
+  <%= element_view_for(element, :class=> 'headline') do |el| -%>
+    <h1><%= el.ingredient(:headline) %></h1>
+    <div class="headline-bar"></div>
+  <%- end -%>
+<%- end -%>

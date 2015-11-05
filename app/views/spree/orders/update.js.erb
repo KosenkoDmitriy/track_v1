@@ -1,0 +1,55 @@
+var winW = $(window).width(),
+		isMobile = (winW < 768) ? true : false;
+ 
+if (!isMobile) {
+	// Refresh minicart count
+	$("#link-to-cart a").replaceWith('<%= escape_javascript link_to_cart %>')
+}
+else {
+	// Refresh minicart count
+	$("#mobile-link-to-cart a").replaceWith('<%= escape_javascript link_to_cart %>')
+}
+
+// Refresh minicart line items
+$("#minicart").replaceWith('<%= escape_javascript render("alchemy/shared/minicart") %>')
+
+if ($('#errorExplanation')){
+	$('#errorExplanation').delay(3500).fadeOut(400);
+}
+
+
+// call minicart updates
+if (isMobile) {
+	minicart(true);
+}
+
+// reset cart height
+  var cartHeight = function(){
+    var winH = $(window).innerHeight();
+    if (!isMobile) {
+      $('#minicart').css('max-height', (winH*.5));
+      $('#update-minicart').css('height', '');
+    }
+    else {
+      $('#minicart').css('max-height', '');
+      $('#minicart-details').css('top', winH-120);
+      $('#update-minicart').css('height', winH);
+    }
+  }();
+
+// minicartPreventUpdateSlides is a global defined in app/assets/javascripts/spree_minicart.js
+// It prevents the sliding down then up of that cart upon item deletion and ensures the mini cart is still visible
+if(!minicartPreventUpdateSlides) {
+	$("#minicart").slideDown();
+	if (isMobile){$('.page-content').css('position', 'fixed');}
+
+	setTimeout(function() {
+		$("#minicart").slideUp();
+		if(isMobile){$('.page-content').css('position', 'relative');}
+
+	}, 1000)
+}
+else {
+	$("#minicart").show();
+}
+minicartPreventUpdateSlides = false;

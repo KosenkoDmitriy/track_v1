@@ -1,0 +1,16 @@
+<section class="login-page">
+  <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @spree_user } %>
+  <h3><%= Spree.t(:change_my_password) %></h3>
+  <div class="line"></div>
+
+  <%= form_for @spree_user, :as => :spree_user, :url => spree.update_password_path, :method => :put do |f| %>
+    <p>
+      <%= f.password_field :password, placeholder: "Password" %>
+    </p>
+    <p>
+      <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+    </p>
+    <%= f.hidden_field :reset_password_token %>
+    <%= f.submit Spree.t(:update), :class => 'button primary' %>
+  <% end %>
+</section>

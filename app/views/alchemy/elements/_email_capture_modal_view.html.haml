@@ -1,0 +1,20 @@
+- cache(element) do
+  = element_view_for(element) do |el|
+    :javascript
+      var google_analytics_event_label = '#{el.render(:google_analytics_event_label)}';
+
+    %div{:class=>"modal-wrapper #{el.render :style}"}
+      %div.modal-overlay
+      %div{:class=>"modal-container bg-color #{el.render :background_color}"}
+        .modal-container-inner
+          =link_to "Close", "#", {:class=>"modal-dismiss"}
+          
+          %h3= el.render :headline
+          %h4= el.render :text
+          =form_tag '/mailchimp/subscribe', {:method=>"post", :id=>"email-capture-modal", :remote=> true, :class=>"email-form"} do
+            - if el.ingredient(:mailchimp_list_id).present?
+              =hidden_field_tag('u', 'f775b6e02c5dce810e40a4652')
+              =hidden_field_tag('id', el.ingredient(:mailchimp_list_id))
+            =email_field :email, :address, {:id=>"email", :placeholder=>"Enter Your Email", :class=>"email-input" }
+            =submit_tag "Sign Up", {:class=>"btn-primary"}
+          %div#response

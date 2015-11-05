@@ -1,0 +1,42 @@
+
+<div data-hook="account_credits" class="account-section" id="credits">
+  <h3><%= Spree.t("store_credits") %></h3>
+  <div class="line"></div>
+  <div class="account-sub-section">
+        <h4>Balance</h4>
+  <% if @user.has_store_credit? %>
+    <div class="current-balance">Your current balance is <%= number_to_currency @user.store_credits_total %></div>
+    <%else%>
+    <div class="current-balance">You do not have any store credit.</div>
+    <%end%>
+    <% if @orders_with_store_credit.present? %>
+      <h3><%= Spree.t('orders_with_store_credit') %></h3>
+      <table class="order-summary">
+        <thead>
+          <tr>
+            <th><%= Spree.t("order_number") %></th>
+            <th><%= Spree.t("order_date") %></th>
+            <th><%= Spree.t("status") %></th>
+            <th><%= Spree.t("customer") %></th>
+            <th><%= Spree.t("total") %></th>
+            <th><%= Spree.t("store_credit") %></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @orders_with_store_credit.each do |order| %>
+          <tr class="<%= cycle('even', 'odd') %>">
+            <td><%= link_to order.number, order_url(order) %></td>
+            <td><%=order.created_at.to_date%></td>
+            <td><%= Spree.t(order.state).titleize %></td>
+            <td><%= order.user.email if order.user %></td>
+            <td><%= number_to_currency order.total %></td>
+            <td><%= number_to_currency order.store_credit_amount %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <%end%>
+  </div>
+</div>
+
+

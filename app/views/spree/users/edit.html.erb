@@ -1,0 +1,25 @@
+<div class="account-page account-edit">
+  <ul class="account-links">
+    <li><a class="account-link" href="/shop/account#dashboard">Account Information</a></li>
+    <li><a class="account-link" href="/shop/account#addresses">Address Book</a></li>
+    <li><a class="account-link" href="/shop/account#orders">Order History</a></li>
+    <li><a class="account-link" href="/shop/account#credits">Credits</a></li>
+    <li><a class="account-link" href="/shop/account#returns">Returns &amp; Exchanges</a></li>
+  </ul>
+  <section class="account-info">
+    <div class="edit-user">
+      <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
+
+      <h3><%= Spree.t(:editing_user) %></h3>
+        <div class="line"></div>
+
+      <%= form_for Spree::User.new, :as => @user, :url => spree.user_path(@user), :method => :put do |f| %>
+        <%= render :partial => 'spree/shared/user_form', :locals => { :f => f, :source => 'account' } %>
+        <p>
+          <%= f.submit Spree.t(:update), :class => 'button primary' %>
+        </p>
+      <% end %>
+    </div>
+  </section>
+</div>
+

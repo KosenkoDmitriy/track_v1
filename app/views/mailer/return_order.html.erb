@@ -1,0 +1,35 @@
+<style>
+	td {
+		padding: 5px 10px;
+	}
+	thead {
+		font-weight: bold;
+	}
+</style>
+
+<h1>!! TRACKSMITH <%= @type.upcase %> ORDER !!</h1>
+
+<table>
+	<thead>
+		<tr>
+			<td>Name</td>
+			<td>Email</td>
+			<td>Type</td>
+			<td>Order Number</td>
+			<td>Replacing</td>
+			<td>Desired</td>
+			<td>Comments</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= @name %></td>
+			<td><%= @email %></td>
+			<td><%= @type %></td>
+			<td><%= @order_number %></td>
+			<td><%= @replacing %></td>
+			<td><%= @desired %></td>
+			<td><%= @comments %></td>
+		</tr>
+	</tbody>
+</table>

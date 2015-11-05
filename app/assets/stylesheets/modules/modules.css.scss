@@ -1,0 +1,1570 @@
+.proxima {
+  @include ProximaReg;
+}
+
+.didot {
+  @include Didot;
+}
+
+.conquer {
+  @include Conquer;
+}
+
+.white {
+  color: #fff;
+}
+
+.black {
+  color: #000;
+}
+
+.purple {
+  color: #0C223F;
+}
+
+.gold {
+  color: $gold;
+}
+
+.silver {
+  color: $silver !important;
+}
+
+.navy {
+  color: $navy
+}
+
+html.no-touch .product-module .variant-option-values.li:hover {
+  border-color: $gold !important;
+  color: $offwhite !important;
+  background-color: $gold !important;
+}
+
+// General Module Styles
+.module {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  min-height: 300px;
+  @include respond-to(mobile) {
+    height: 100%;
+  }
+  img {
+    max-width: 100%;
+  }
+  img.alchemy {
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+  }
+
+}
+
+.quote-module, .hero-module, .email_capture_expanded {
+  @extend .module;
+}
+
+.superheader, .bullet {
+  @include AGConMed();
+  font-size: emCal(20px);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+}
+
+.superheader {
+  margin-bottom: 40px;
+}
+
+.bullet-list {
+  margin-top: 40px;
+}
+
+.bullet {
+  margin-bottom: 15px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.stamp-image {
+  margin: 40px auto 0;
+  width: 80px;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+// General Background & Overlay Styles
+
+.bg-image, .bg-color {
+  height: 100%;
+  // have to include important for the height below to override height set thru alchemy
+  @include respond-to(mobile) {
+    min-height: 400px;
+    height: 100% !important;
+  }
+  .height-wrapper {
+    @include respond-to(mobile) {
+      height: 100% !important;
+    }
+  }
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.module .bg-color {
+  min-height: 300px;
+}
+
+.bg-color {
+  position: relative;
+  @include respond-to(mobile) {
+    padding: 0 20px;
+  }
+  &.purple {
+    background-color: $lightpurple;
+  }
+  &.white {
+    background-color: $offwhite;
+  }
+  &.navy {
+    background-color: $navy;
+  }
+  &.crimson {
+    background-color: $crimson;
+  }
+  &.gold {
+    background-color: $gold;
+  }
+  &.forest {
+    background-color: $forest;
+  }
+  &.olive {
+    background-color: $olive;
+  }
+  &.red {
+    background-color: $red;
+  }
+  &.crimson {
+    background-color: $crimson
+  }
+}
+
+// Aligned Module Content
+
+.module-content {
+  position: absolute;
+  width: 480px;
+  overflow: hidden;
+  @include respond-to(mobile) {
+    position: relative;
+    width: 100%;
+    padding: emCal(172px) 20px emCal(160px);
+  }
+  .module-headline, .module-headline p {
+    font-size: emCal(60px);
+    @include Didot;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0;
+    @include respond-to(mobile) {
+      font-size: emCal(38px);
+    }
+  }
+  .module-text {
+    p {
+      margin: 30px auto 0;
+      padding: 0;
+      @include respond-to(mobile) {
+        font-size: emCal(25px);
+      }
+    }
+    a {
+      color: inherit;
+      font-style: italic;
+      font-weight: 400;
+      text-decoration: underline;
+    }
+  }
+  .module-cta {
+    a {
+      display: inline-block;
+      max-width: 175px;
+
+      &.btn-primary {
+        border-color: $white;
+        color: $white;
+
+        &:hover {
+          border-color: $white;
+          background: $white !important;
+          color: $gold;
+        }
+      }
+    }
+  }
+  &.text-center {
+    text-align: center;
+  }
+  &.text-left {
+    text-align: left;
+  }
+  &.top-left {
+    top: 60px;
+    left: 60px;
+  }
+  &.top-center {
+    top: 60px;
+    left: 50%;
+    margin-left: -240px;
+  }
+  &.top-right {
+    top: 60px;
+    right: 60px;
+  }
+  &.center-left {
+    top: 50%;
+    left: 60px;
+    @include transform(translateY(-50%));
+  }
+  &.center-center {
+    left: 10%;
+    top: 50%;
+    width: 80%;
+    @include transform(translateY(-50%));
+  }
+  &.center-right {
+    top: 50%;
+    right: 60px;
+    @include transform(translateY(-50%));
+  }
+  &.bottom-left {
+    bottom: 32px;
+    left: 60px;
+    width: auto;
+
+    .superheader {
+      margin-bottom: 20px;
+    }
+
+    .module-text p {
+      margin-top: 0;
+    }
+  }
+  &.bottom-center {
+    bottom: 32px;
+    left: 50%;
+    margin-left: -240px;
+  }
+  &.bottom-right {
+    bottom: 32px;
+    right: 60px;
+  }
+  &.top-left, &.top-center, &.top-right, &.center-left, &.center-center, &.center-right, &.bottom-left, &.bottom-center, &.bottom-right {
+    @include respond-to(mobile) {
+      margin-left: 0;
+      top: auto;
+      left: auto;
+      right: auto;
+      -webkit-transform: none;
+      -moz-transform: none;
+      -ms-transform: none;
+      -o-transform: none;
+      transform: none;
+      width: 100%;
+    }
+  }
+  &.bottom-left {
+    @include respond-to(mobile) {
+      padding: 0 20px;
+      position: absolute;
+    }
+  }
+  img {
+    display: inline-block;
+  }
+}
+
+// Width override on referral pages
+.referral-page .module-content {
+  width: 540px;
+
+  @include respond-to(mobile) {
+    width: 100%;
+  }
+}
+
+// Top Hero Module with Video
+
+.product_hero, .hero_module {
+  @extend .module;
+  padding: 0;
+  position: relative;
+  // @include respond-to(mobile) {height: 640px;}
+  .overlay {
+    z-index: 1;
+  }
+  video#bgvideo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    @include respond-to(mobile) {
+      display: none;
+    }
+  }
+}
+
+.hero-headline {
+  position: absolute;
+  width: 80%;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+  z-index: 2;
+  &.white {
+    color: #fff;
+  }
+  &.black {
+    color: #000;
+  }
+  &.gold {
+    color: $gold;
+  }
+}
+
+#svg-product-hero {
+  height: 100%;
+  width: 100%;
+  text {
+    @include AGConMed;
+    text-transform: uppercase;
+    @include respond-to(mobile) {
+      font-size: emCal(90px);
+    }
+  }
+}
+
+// Standard Content Module - May turn into a single module
+// uses aligned content styles above
+.background_image_module {
+  @extend .module;
+  height: 100%;
+  min-height: 300px;
+  padding: 0 !important;
+  @include respond-to(mobile) {
+    padding: 0 20px;
+    height: 100%;
+  }
+  .bg-image {
+    min-height: 300px;
+    @include respond-to(mobile) {
+    }
+  }
+  .cta{
+    color: $white;
+  }
+}
+
+.background_color_module {
+  @extend .module;
+  min-height: 300px;
+  @include respond-to(mobile) {
+  }
+}
+
+// Quote Module
+.quote-module {
+  min-height: 300px;
+  position: relative;
+  @include respond-to(mobile) {
+    min-height: 640px;
+  }
+}
+
+.quote-content {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}
+
+.quote {
+  @include Didot;
+  font-size: emCal(45px);
+  line-height: 1.3;
+  text-transform: uppercase;
+  margin: 0 auto;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 100%;
+  max-width: 1000px;
+  @include respond-to(mobile) {
+    font-size: emCal(30px);
+    padding: 0 20px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+.quote-author {
+  @include AGConMed;
+  font-size: emCal(30px);
+  margin-top: 75px;
+  @include respond-to(mobile) {
+    font-size: emCal(25px);
+    margin-top: 50px;
+  }
+}
+
+// Module for Row of Images with Rollover
+.image_row {
+  display: table;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+  @include respond-to(mobile) {
+    display: block;
+  }
+  .mod-block {
+    display: table-cell;
+    position: relative;
+    @include respond-to(mobile) {
+      display: block;
+      position: static;
+    }
+    &:hover {
+      .rollover {
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, .5);
+      }
+    }
+  }
+  .rollover-headline {
+    margin-top: 160px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .rollover-blurb {
+    p {
+      font-size: emCal(18px);
+      text-align: center;
+    }
+  }
+  .rollover {
+    display: none;
+  }
+
+  // Jamals image row code
+  .table-row {
+    display: table-row;
+    @include respond-to(mobile) {
+      display: block;
+    }
+  }
+  .image-row-block {
+    display: table-cell;
+    vertical-align: top;
+
+    @include respond-to(mobile) {
+      display: block;
+    }
+  }
+}
+
+.jumbo_product {
+  position: relative;
+  height: auto;
+  color: $gold;
+  .height-wrapper {
+    padding: 70px 0;
+    @include respond-to(mobile) {
+      padding: 40px 0;
+    }
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+  img.alchemy {
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+  }
+  .jumbo-text {
+    position: absolute;
+    width: 480px;
+    height: auto;
+    text-align: center;
+    @include respond-to(mobile) {
+      padding: 0 emCal(20px);
+      position: relative;
+      width: 100%;
+    }
+    &.top-left {
+      top: 170px;
+      left: emCal(60px);
+    }
+    &.top-center {
+      top: 170px;
+      left: 50%;
+      margin-left: emCal(-240px);
+    }
+    &.top-right {
+      top: 170px;
+      right: emCal(60px);
+    }
+    &.center-left {
+      top: 50%;
+      left: emCal(60px);
+      @include transform(translateY(-50%));
+    }
+    &.center-center {
+      top: 50%;
+      left: 50%;
+      margin-left: emCal(-240px);
+      @include transform(translateY(-50%));
+    }
+    &.center-right {
+      top: 50%;
+      right: emCal(60px);
+      @include transform(translateY(-50%));
+    }
+    &.bottom-left {
+      bottom: emCal(233px);
+      left: emCal(60px);
+    }
+    &.bottom-center {
+      bottom: emCal(233px);
+      left: 50%;
+      margin-left: emCal(-240px);
+    }
+    &.bottom-right {
+      bottom: emCal(233px);
+      right: emCal(60px);
+    }
+    &.top-left, &.top-center, &.top-right, &.center-left, &.center-center, &.center-right, &.bottom-left, &.bottom-center, &.bottom-right {
+      @include respond-to(mobile) {
+        margin-left: 0;
+        top: auto;
+        left: auto;
+        right: auto;
+        @include transform(none);
+      }
+    }
+  }
+}
+
+.content-module {
+  height: auto;
+  overflow: hidden;
+  .left {
+    float: left;
+    margin-right: 20px;
+  }
+  .right {
+    float: right;
+    margin-left: 20px;
+  }
+  .small {
+    width: 33%;
+  }
+  .half {
+    width: 50%;
+  }
+  .large {
+    width: 66%;
+  }
+}
+
+// Module for display slider of 3 products
+.product-slider-module {
+  height: auto;
+  padding: emCal(100px) 0;
+  text-align: center;
+
+  @include respond-to(mobile) {padding: emCal(40px) 0;}
+
+  .module-headline, .module-headline p {
+    font-size: emCal(60px);
+    @include Didot;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0;
+    @include respond-to(mobile) {
+      font-size: emCal(38px);
+    }
+  }
+  .module-text {
+    p {
+      margin: 30px auto 0;
+      padding: 0;
+      @include respond-to(mobile) {
+        font-size: emCal(25px);
+      }
+    }
+    a {
+      cursor: pointer;
+      font-weight: 600;
+      margin: 0 5px;
+    }
+  }
+  .slick-slider{
+    max-width: 1200px;
+    margin: emCal(100px) auto;
+
+    img {
+      width: 350px;
+    }
+
+    @include respond-to(mobile) {margin: emCal(40px) auto;}
+  }
+}
+
+// Essay Module
+
+// Essay Intro module
+.essay-intro {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: $offwhite;
+  padding: 0 emCal(60px);
+  @include respond-to(mobile) {
+    padding: 0 emCal(20px);
+  }
+  .essay-header {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: emCal(60px);
+    padding-top: emCal(104px);
+  }
+  .essay-superheader {
+    color: $darkpurple;
+    margin: 0 auto;
+    padding-bottom: emCal(44px);
+    text-transform: uppercase;
+    @include respond-to(mobile) {
+      font-size: emCal(20px);
+    }
+  }
+  .article_title {
+    font-size: emCal(150px);
+    line-height: 0.77;
+    color: $purple;
+    @include Conquer;
+    @include respond-to(mobile) {
+      font-size: emCal(40px);
+      line-height: 1;
+    }
+  }
+  .essay-blurb {
+    width: emCal(600px);
+    margin: 0 auto;
+    @include respond-to(mobile) {
+      width: 100%;
+    }
+    p {
+      font-size: emCal(24px);
+      line-height: emCal(39px);
+      font-style: italic;
+      color: #000;
+      margin-bottom: 40px;
+      &:last-child {
+        margin-bottom: 120px;
+      }
+      @include respond-to(mobile) {
+        padding-bottom: emCal(20px);
+      }
+    }
+  }
+  .credits {
+    text-transform: uppercase;
+    padding-bottom: emCal(105px);
+    @include respond-to(mobile) {
+      padding-bottom: emCal(40px);
+    }
+    span {
+      font-size: emCal(15px);
+      color: $purpleblack;
+      @include respond-to(mobile) {
+        font-size: emCal(10px);
+      }
+    }
+    .colon {
+      padding: 0 emCal(14px);
+    }
+  }
+  .credit-line {
+    @include Garamond;
+    letter-spacing: 0.1em;
+    padding-bottom: emCal(10px);
+  }
+  .icon {
+    width: emCal(60px);
+    margin: 0 auto;
+    padding-bottom: emCal(110px);
+  }
+}
+
+// Essay Body Module
+
+.essay-body {
+  background-color: $offwhite;
+  width: emCal(600px);
+  margin: 0 auto;
+  padding: emCal(168px) 0;
+  @include respond-to(mobile) {
+    width: 100%;
+    padding: emCal(110px) emCal(20px);
+  }
+  p {
+    font-size: emCal(20px);
+    line-height: emCal(40px);
+    color: $darkpurple;
+  }
+}
+
+
+// ALL PRODUCTS PAGE
+
+body.mens {
+  .womens-banner {
+    display: none;
+  }
+}
+body.womens {
+  .mens-banner {
+    display:none;
+  }
+}
+
+.all-products {
+  h3 {
+    color: $grey;
+    margin-top: 125px;
+    text-align: center;
+    margin-bottom: -100px;
+  }
+  .product-category:nth-of-type(even) {
+    .variant.feature {
+      float: left;
+    }
+    .row {
+      @include row($direction: RTL);
+    }
+  }
+  .product-category {
+    @include outer-container;
+    padding-top: 100px;
+
+    &:last-of-type {
+      margin-bottom: 100px;
+    }
+    .row {
+      @include span-columns(6 of 12);
+      @include row();
+      .variant {
+        @include span-columns(3 of 6);
+        margin-left: 0;
+      }
+    }
+    .full-row {
+      @include span-columns(12);
+      @include row();
+      @include fill-parent();
+      .variant {
+        @include span-columns(3 of 12);
+      }
+    }
+    .variant {
+      @include span-columns(3);
+      @include transition(background-color 0.3s ease);
+      background-color: $offwhite;
+      min-height: 450px;
+      padding-top: 30px;
+      &.feature {
+        @include span-columns(6 of 12);
+        @include omega();
+        float: right;
+        min-height: 980px;
+        position: relative;
+        padding-top: 0;
+        .image {
+          height: 600px;
+          margin: 0 auto;
+          width: 100%;
+          img{
+            top: 200px;
+          }
+        }
+        .label {
+          bottom: 0;
+          position: absolute;
+        }
+        .hover-image {
+          @include transition(opacity 0.5s ease-in);
+          background-position: center center;
+          background-repeat: none;
+          background-size: cover;
+          opacity: 0;
+          position: absolute;
+        }
+        &:hover {
+          background-color: $white;
+          .hover-image {
+            height: 100%;
+            opacity: 1;
+            overflow: hidden;
+            width: 100%;
+          }
+          span {
+            opacity: 0;
+          }
+        }
+      }
+      &:hover {
+        background-color: #f1ede8;
+      }
+      a{
+        text-decoration: none;
+      }
+      .image {
+        display: block;
+        height: 300px;
+        margin: 0 auto 30px;
+        position: relative;
+        text-align: center;
+        width: 90%;
+        img {
+          display: inline-block;
+          margin: auto;
+          max-height: 100%;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          top: 0;
+          width: auto;
+        }
+      }
+      .na {
+        display: block;
+        width: 100%;
+        text-align: center;
+        height: 300px;
+        background-color: #ddd;
+      }
+      .label {
+        width: 100%;
+        text-align: center;
+        color: #444;
+        line-height: 1;
+        .name {
+          @include AGConLight;
+          display: block;
+          font-size: 20px;
+          letter-spacing: 0.1em;
+          margin-bottom: 15px;
+          text-align: center;
+          text-transform: uppercase;
+          width: 100%;
+        }
+        .price {
+          @include AGConLight;
+          font-size: 50px;
+          display: block;
+          margin-bottom: 25px;
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+
+  .variant:hover {
+    background-color: #f1ede8;
+    @include transition(background-color 0.3s ease);
+  }
+
+  @include respond-to(mobile) {
+    padding: 5px;
+    .mobile_header {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 40px;
+      @include Didot;
+      color: #444;
+      padding-top: 45px;
+      padding-bottom: 30px;
+      text-transform: uppercase;
+    }
+    hr {
+      width: 33px;
+      height: 2px;
+      border: none;
+      background: #444;
+    }
+    .product-heading {
+      margin-top: 25px;
+    }
+    .product-category {
+      padding-top: 0;
+
+      .row {
+        @include span-columns(12 of 12);
+        .variant {
+          @include span-columns(12 of 12);
+        }
+      }
+      .full-row {
+        @include span-columns(12 of 12);
+        .variant {
+          @include span-columns(12 of 12);
+        }
+      }
+
+      .variant {
+        @include span-columns(12);
+        @include omega();
+        &.feature {
+          @include span-columns(12);
+          float: none;
+          min-height: 450px;
+          position: relative;
+          padding-top: 30px;
+          .image {
+            height: 300px;
+            margin: 0 auto 30px;
+            width: 90%;
+            img {
+              top: 0;
+            }
+          }
+          .label {
+            position: relative;
+          }
+          .hover-image {
+            display: none;
+          }
+        }
+      }
+      .product-category:nth-of-type(even) .feature {
+      float: none;
+      }
+    }
+  }
+}
+
+
+// BEGIN FOOTER PAGE STYLES
+.footer-page {
+  color: $purpleblack;
+  .footer_page_block {
+    width: 42%;
+    margin: 0 auto;
+    @include respond-to(mobile) {
+      width: 100%;
+      padding: 0 25px;
+    }
+  }
+  .headline {
+    margin: 76px auto 80px;
+    width: 42%;
+    @include respond-to(mobile) {
+      margin: 76px auto 20px;
+      padding: 12px 20px 0;
+      width: 100%;
+    }
+    h1 {
+      @include Didot();
+      font-size: emCal(60px);
+      line-height: 60px;
+      text-align: center;
+      color: $purpleblack;
+      text-transform: capitalize;
+      @include respond-to(mobile) {
+        font-size: emCal(35px);
+        line-height: 1;
+      }
+    }
+    .headline-bar {
+      width: emCal(60px);
+      margin: 30px auto 0;
+      height: 3px;
+      background-color: $purpleblack;
+      @include respond-to(mobile) {
+        width: 30px;
+        height: 1.5 tpx;
+      }
+    }
+  }
+  .section-header {
+    @include AGConLight();
+    font-size: emCal(30px);
+    line-height: emCal(40px);
+    text-transform: uppercase;
+    color: $purpleblack;
+    padding: 0 0 20px;
+  }
+  .text {
+    margin: 0 auto 76px;
+    p {
+      font-family: Garamond;
+      font-size: emCal(20px);
+      line-height: emCal(32px);
+      margin: 0;
+    }
+  }
+  .footnote {
+    margin: 0 auto;
+    width: 42%;
+    .stamp-image {
+      margin: 40px auto 140px;
+      @include respond-to(mobile) {
+        margin: 40px auto 110px;
+      }
+    }
+    @include respond-to(mobile) {
+      padding: 0 20px;
+      width: 100%;
+    }
+  }
+  .footnote-text {
+    p {
+      font-family: Garamond;
+      font-size: emCal(20px);
+      line-height: 40px;
+      font-style: italic;
+      text-align: center;
+    }
+  }
+}
+
+// END FOOTER PAGE STYLES
+
+// BEGIN 404 STYLES
+.error-page {
+  background-color: $navy;
+  text-align: center;
+  color: $gold;
+  min-height: 775px;
+  padding: 274px 0;
+  @include respond-to(mobile) {
+    min-height: 0;
+    padding: 58px 20px 130px;
+  }
+  .sorry {
+    h1 {
+      @include Didot();
+      font-size: emCal(40px);
+      line-height: 1;
+      text-transform: none;
+      @include respond-to(mobile) {
+        font-size: emCal(30px);
+        padding: 10px;
+      }
+    }
+  }
+  .link-error {
+    p {
+      @include AGConLight();
+      font-size: emCal(25px);
+    }
+  }
+  .back {
+    a {
+      text-decoration: none;
+    }
+  }
+  .btn {
+    width: 280px;
+    padding: 14px 0;
+    margin: 0 auto;
+    background-color: transparent;
+    border: 3px solid $gold;
+    font-size: emCal(11px);
+    letter-spacing: 3px;
+    @include respond-to(mobile) {
+      color: white;
+      background-color: $gold;
+    }
+  }
+}
+
+// END 404 STYLES
+
+// BEGIN EMAIL MODAL STYLES
+
+.email_capture_modal {
+  .modal-wrapper {
+    &.visible {
+      .modal-container {
+        display: block;
+        left: 50%;
+        top: 50%;
+
+        -webkit-opacity: 0.0;
+        -moz-opacity: 0.0;
+        -ms-opacity: 0.0;
+        opacity: 0.0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+
+        -webkit-transform: scale(1.1, 1.1) translate(-50%, -50%);
+        -moz-transform: scale(1.1, 1.1) translate(-50%, -50%);
+        -ms-transform: scale(1.1, 1.1) translate(-50%, -50%);
+        transform: scale(1.1, 1.1) translate(-50%, -50%);
+
+        -webkit-transition: all 150ms ease-out;
+        -moz-transition: all 150ms ease-out;
+        transition: all 150ms ease-out;
+
+        &.in {
+          -webkit-opacity: 1.0;
+          -moz-opacity: 1.0;
+          -ms-opacity: 1.0;
+          opacity: 1.0;
+          -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+
+          -webkit-transform: scale(1.0, 1.0) translate(-50%, -50%);
+          -moz-transform: scale(1.0, 1.0) translate(-50%, -50%);
+          -ms-transform: scale(1.0, 1.0) translate(-50%, -50%);
+          transform: scale(1.0, 1.0) translate(-50%, -50%);
+
+          -webkit-transition: all 250ms ease-out;
+          -moz-transition: all 250ms ease-out;
+          transition: all 250ms ease-out;
+        }
+      }
+
+      .modal-overlay {
+        display: block;
+        -webkit-opacity: 0.0;
+        -moz-opacity: 0.0;
+        -ms-opacity: 0.0;
+        opacity: 0.0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        -webkit-transition: all 250ms ease-out;
+        -moz-transition: all 250ms ease-out;
+        transition: all 250ms ease-out;
+
+        &.in {
+          -webkit-transition: all 250ms ease-out;
+          -moz-transition: all 250ms ease-out;
+          transition: all 250ms ease-out;
+          -webkit-opacity: 0.75;
+          -moz-opacity: 0.75;
+          -ms-opacity: 0.75;
+          opacity: 0.75;
+          -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+        }
+      }
+    }
+  }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 99998;
+  }
+
+  .modal-container {
+    display: none;
+    border: 1px solid $gold;
+    .modal-container-inner {
+      padding: 20px;
+    }
+    width: 600px;
+    max-width: 90%;
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    height: auto !important;
+    z-index: 99999;
+    padding: 5px;
+    h3 {
+      p {
+        @include Didot;
+        text-align: center;
+        clear: both;
+        padding-top: 1em;
+        text-transform: uppercase;
+        font-size: 0.7em;
+      }
+    }
+    h4 {
+      p {
+        @include Didot;
+        text-align: center;
+        text-transform: none;
+        font-size: 0.45em;
+      }
+    }
+    .modal-dismiss {
+      text-indent: -9999em;
+      display: block;
+      background: image-url('icons/close.png') no-repeat top left;
+      width: 23px;
+      height: 24px;
+      float: right;
+    }
+    #response {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .modal-container {
+      h4 {
+        margin-bottom: 10px;
+        p {
+          font-size: 0.35em;
+        }
+      }
+    }
+
+    .email-form {
+      padding-top: 0;
+
+      input.email-input {
+        width: 100%;
+        margin: 0 0 10px;
+        padding: 10px;
+        font-size: 1.4em;
+      }
+      input[type="submit"] {
+        width: 100%;
+      }
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+    .modal-container {
+      .modal-dismiss {
+        background: asset-url("icons/close_x2.png") no-repeat top left;
+        background-size: 23px 24px;
+      }
+    }
+  }
+}
+
+/* Holiday 2014 */
+.email_capture_modal {
+	.modal-wrapper.holiday2014 {
+		.modal-container {
+			background:#000 asset-url("email/holiday_modal_background.jpg") no-repeat center center;
+			background-size:cover;
+			width:730px;
+			height:486px;
+			h3,h4 { color:white; text-align:left; padding:0; margin:0; }
+			h3 p { font-size:40px; line-height:1.2em; font-weight:bold; margin:0; padding:0.75em 0; text-align:left; }
+			h4 p { font-size:24px; line-height:1.2em; font-weight:bold; margin:0 0 0.5em; padding:0; text-align:left; }
+		}
+		.modal-container-inner {
+			padding-left:330px;
+		}
+		form#email-capture-modal.email-form {
+			width:100%;
+			padding-top:20px;
+
+			input.email-input {
+				border-bottom:1px solid white;
+				color:white;
+				width:65%;
+
+				@include placeholder { color:white !important; }
+
+			}
+			.btn-primary {
+				border-color:white;
+				color:white;
+				&:hover, &:active {
+					background-color:white;
+				}
+			}
+		}
+		#response, .email-response {
+			margin:20px 0;
+		}
+		@media (max-width: 959px) {
+			.modal-container-inner {
+				padding-left:45%;
+			}
+			form#email-capture-modal.email-form {
+				input.email-input {
+					width:60%;
+					text-align:left;
+					margin:0 10px 20px 0;
+				}
+	      input[type="submit"] {
+	        width: 35%;
+					padding-left:0;
+					padding-right:0;
+	      }
+			}
+		}
+		@media (max-width: 768px) {
+			.modal-container-inner {
+				padding-left:40%;
+			}
+			.modal-container {
+				h3 p { font-size:36px; padding:0 0 0.75em; }
+				h4 p { font-size:18px;}
+			}
+			form#email-capture-modal.email-form {
+				input.email-input {
+					width:100%;
+					padding:0.25em;
+				}
+	      input[type="submit"] {
+	        width: 100%;
+	      }
+			}
+		}
+
+		@media (max-width: 400px) {
+      .modal-container {
+        background-position: center left !important;
+      }
+			.modal-container-inner {
+				padding-left:10%;
+
+        h3 p { font-size: 24px; }
+        h4 p { font-size: 14px; }
+			}
+		}
+		@media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2.5),
+		 (max-width:768px) and (min--moz-pixel-ratio: 2.5),
+		 (max-width:768px) and (-o-min-device-pixel-ratio: 3/1),
+		 (max-width:768px) and (min-device-pixel-ratio: 2.5) {
+			.modal-container {
+				background-position:-185px center !important;
+				background-size: auto 110%;
+			}
+			.modal-container-inner {
+				padding-left:20%;
+			}
+		}
+
+	  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+	  only screen and (min--moz-device-pixel-ratio: 2),
+	  only screen and (-o-min-device-pixel-ratio: 2/1),
+	  only screen and (min-device-pixel-ratio: 2),
+	  only screen and (min-resolution: 192dpi),
+	  only screen and (min-resolution: 2dppx) {
+	    .modal-container {
+				background:#000 asset-url("email/holiday_modal_background_retina.jpg") no-repeat center center;
+				background-size: auto 110%;
+	    }
+	  }
+
+    @media (max-width: 767px) and (orientation: landscape) {
+      .modal-container-inner {
+        h3 p { font-size: 24px; }
+        h4 p { font-size: 14px; }
+      }
+
+      form#email-capture-modal.email-form {
+        padding-top: 0;
+      }
+    }
+	}
+}
+
+.email_capture_modal {
+  .modal-wrapper.spring2015 {
+    .modal-container {
+      background:#000 asset-url("email/spring_2015_background.jpg") no-repeat center center;
+      background-size:cover;
+      width:680px;
+      height:486px;
+      h3,h4 { color:white; text-align:left; padding:0; margin:0; }
+      h3 p { font-size:40px; line-height:1.2em; font-weight:bold; margin:0; padding:0.75em 0; text-align:left; }
+      h4 p { font-size:24px; line-height:1.2em; font-weight:bold; margin:0 0 0.5em; padding:0; text-align:left; }
+
+      .modal-dismiss {
+        background: image-url('icons/close_white.png') no-repeat top left;
+      }
+    }
+    .overlay {
+      background: rgba(0,0,0,.2);
+    }
+    .modal-container-inner {
+      padding-left: 100px;
+      padding-right: 30px;
+      padding-bottom: 40px;
+      position: relative;
+    }
+    form#email-capture-modal.email-form {
+      width:100%;
+      padding-top:20px;
+
+      input.email-input {
+        border-bottom:1px solid white;
+        color:white;
+        width:65%;
+
+        @include placeholder { color:white !important; }
+
+      }
+      .btn-primary {
+        border-color:white;
+        color:white;
+        &:hover, &:active {
+          background-color:white;
+        }
+      }
+    }
+    #response, .email-response {
+      margin:20px 0;
+    }
+    @media (max-width: 959px) {
+      .modal-container-inner {
+        padding-left:15%;
+      }
+      form#email-capture-modal.email-form {
+        input.email-input {
+          width:60%;
+          text-align:left;
+          margin:0 10px 20px 0;
+        }
+        input[type="submit"] {
+          width: 35%;
+          padding-left:0;
+          padding-right:0;
+        }
+      }
+    }
+    @media (max-width: 768px) {
+      .modal-container-inner {
+      }
+      .modal-container {
+        h3 p { font-size:36px; padding:0 0 0.75em; }
+        h4 p { font-size:18px;}
+      }
+      form#email-capture-modal.email-form {
+        input.email-input {
+          width:100%;
+          padding:0.25em;
+        }
+        input[type="submit"] {
+          width: 100%;
+        }
+      }
+    }
+
+    @media (max-width: 400px) {
+      .modal-container {
+        background-position: center left !important;
+      }
+      .modal-container-inner {
+        padding-left:10%;
+
+        h3 p { font-size: 24px; }
+        h4 p { font-size: 14px; }
+      }
+    }
+    @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2.5),
+     (max-width:768px) and (min--moz-pixel-ratio: 2.5),
+     (max-width:768px) and (-o-min-device-pixel-ratio: 3/1),
+     (max-width:768px) and (min-device-pixel-ratio: 2.5) {
+      .modal-container {
+        background-position:-185px center !important;
+        background-size: auto 110%;
+      }
+      .modal-container-inner {
+        padding-left:20%;
+      }
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+      .modal-container {
+        background:#000 asset-url("email/spring_2015_background_retina.jpg") no-repeat center center;
+        background-size: cover;
+
+        .modal-container-inner {
+          padding-bottom: 40px;
+          padding-top: 40px;
+        }
+      }
+
+      .modal-dismiss {
+        background: asset-url("icons/close_white_x2.png") no-repeat top left;
+      }
+    }
+
+    @media (max-width: 767px) and (orientation: landscape) {
+      .modal-container-inner {
+        h3 p { font-size: 24px; }
+        h4 p { font-size: 14px; }
+      }
+
+      form#email-capture-modal.email-form {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+// END EMAIL MODAL STYLES
+
+.products-nav {
+  @include span-columns(9);
+  @include shift(2.85);
+  color: $goldgrey;
+  font-size: emCal(14px);
+  font-family: "akzidenz-grotesk-condensed", sans-serif;
+  letter-spacing: 0.2em;
+  margin-top: 71px;
+  text-transform: uppercase;
+
+  li {
+    @include span-columns(3);
+    margin: 2em auto;
+    text-align: center;
+  }
+}

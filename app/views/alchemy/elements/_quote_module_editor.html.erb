@@ -1,0 +1,11 @@
+<%= element_editor_for(element) do |el| -%>
+  <% if @page.page_layout == 'index' %>
+  <%= el.edit :page_link %>
+  <%end%>
+  <%= el.edit :quote %>
+  <%= el.edit :author %>
+  <%= el.edit :background_color, :select_values => ['purple', 'white', 'navy', 'crimson', 'gold', 'forest', 'olive'] %>
+  <%= el.edit :text_color, :select_values => ['black', 'white', 'gold'] %>
+  <%= el.edit :quote_text_size %>
+  <%= el.edit :author_text_size %>
+<%- end -%>
